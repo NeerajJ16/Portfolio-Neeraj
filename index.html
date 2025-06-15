@@ -1,76 +1,1083 @@
 <!DOCTYPE html>
 <html lang="en">
+
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Site Frozen</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: #111;
-      color: #fff;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      overflow: hidden;
-    }
-
-    .message-box {
-      text-align: center;
-    }
-
-    h1 {
-      font-size: 2.5rem;
-      color: #ff4b5c;
-      text-shadow: 0 0 10px #ff4b5c, 0 0 20px #ff4b5c;
-      animation: flicker 1.5s infinite;
-    }
-
-    p {
-      margin-top: 10px;
-      font-size: 1.2rem;
-      color: #ccc;
-    }
-
-    button {
-      margin-top: 20px;
-      padding: 10px 20px;
-      background: #444;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    button:hover {
-      background: #666;
-    }
-
-    @keyframes flicker {
-      0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-        opacity: 1;
-      }
-      20%, 24%, 55% {
-        opacity: 0.4;
-      }
-    }
-  </style>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Portfolio-Neeraj Jawahirani</title>
+    <meta name="robots" content="noindex, follow" />
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- CSS 
+    ============================================ -->
+    <link rel="stylesheet" href="css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="css/vendor/slick.css">
+    <link rel="stylesheet" href="css/vendor/slick-theme.css">
+    <link rel="stylesheet" href="css/vendor/aos.css">
+    <link rel="stylesheet" href="css/plugins/feature.css">
+    <!-- Style css -->
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://static.elfsight.com/platform/platform.js" async></script>
+    <div class="elfsight-app-ee631b79-b8df-4114-ac31-9391198abd1a" data-elfsight-app-lazy></div>
 </head>
-<body>
-  <div class="message-box">
-    <h1>⚠️ Site Unavailable</h1>
-    <p>Sorry, the site is currently frozen or experiencing hosting issues.</p>
-    <button onclick="retry()">Try Again</button>
-  </div>
 
-  <script>
-    function retry() {
-      location.reload();
-    }
-  </script>
+<body class="template-color-1 spybody" data-spy="scroll" data-target=".navbar-example2" data-offset="70">
+
+    <!-- Start Header -->
+    <header class="rn-header haeder-default black-logo-version header--fixed header--sticky">
+        <div class="header-wrapper rn-popup-mobile-menu m--0 row align-items-center">
+            <!-- Start Header Left -->
+            <div class="col-lg-2 col-6">
+                <div class="header-left">
+                    <div class="logo">
+                        <a href="index.html">
+                            <img src="images/NJ.png" alt="logo">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- End Header Left -->
+            <!-- Start Header Center -->
+            <div class="col-lg-10 col-6">
+                <div class="header-center">
+                    <nav id="sideNav" class="mainmenu-nav navbar-example2 d-none d-xl-block">
+                        <!-- Start Mainmanu Nav -->
+                        <ul class="primary-menu nav nav-pills">
+                            <li class="nav-item"><a class="nav-link smoth-animation active" href="#home">Home</a></li>
+                            <li class="nav-item"><a class="nav-link smoth-animation" href="#features">Skills</a></li>
+                            <li class="nav-item"><a class="nav-link smoth-animation" href="#resume">Resume</a></li>
+                            <li class="nav-item"><a class="nav-link smoth-animation" href="#testimonial">Projects</a></li>
+                            <li class="nav-item"><a class="nav-link smoth-animation" href="#extrac">Extra Cirriculars</a></li>
+                            <li class="nav-item"><a class="nav-link smoth-animation" href="#contacts">Contact</a></li>
+                        </ul>
+                        <!-- End Mainmanu Nav -->
+                    </nav>
+                    <div class="header-right">
+                        <ul class="primary-menu nav nav-pills">
+                       <!--<li class="nav-item"><a class="rn-btn" target="" href="resume/neeraj_jawahirani_resume.pdf"><span>Resume/CV</span></a></li>-->
+                        <li class="nav-item"><a class="rn-btn" target="" href="https://dev-neerajj.pantheonsite.io/"><span>Blogs</span></a></li>
+                        </ul>
+                        <div class="hamberger-menu d-block d-xl-none">
+                            <i id="menuBtn" class="feather-menu humberger-menu"></i>
+                        </div>
+                        <div class="close-menu d-block">
+                            <span class="closeTrigger">
+                            <i data-feather="x"></i>
+                        </span>
+                        </div>
+                    </div>
+                    <!-- End Header Right  -->
+
+                </div>
+            </div>
+            <!-- End Header Center -->
+        </div>
+    </header>
+    <!-- Start Popup Mobile Menu  -->
+    <div class="popup-mobile-menu">
+        <div class="inner">
+            <div class="menu-top">
+                <div class="menu-header">
+                    <div class="close-button">
+                        <button class="close-menu-activation close"><i data-feather="x"></i></button>
+                    </div>
+                </div>
+                <p class="discription">Neeraj Jawahirani</p>
+            </div>
+            <div class="content">
+                <ul class="primary-menu nav nav-pills">
+                    <li class="nav-item"><a class="nav-link smoth-animation active" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link smoth-animation" href="#features">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link smoth-animation" href="#resume">Resume</a></li>
+                    <li class="nav-item"><a class="nav-link smoth-animation" href="#testimonial">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link smoth-animation" href="#extrac">Extra Cirriculars</a></li>
+                    <li class="nav-item"><a class="nav-link smoth-animation" href="#contacts">Contact</a></li>
+                    <!--<li class="nav-item"><a class="nav-link smoth-animation" style="color: orangered;" href="/resume/neeraj_jawahirani_resume.pdf">Resume</a></li>-->
+                    <li class="nav-item"><a class="nav-link smoth-animation" style="color: orangered;" href="https://dev-neerajj.pantheonsite.io/">Blogs</a></li>
+                </ul>
+                <!-- social sharea area -->
+                <div class="social-share-style-1 mt--40">
+                    <span class="title">Find me on</span>
+                    <ul class="social-share d-flex liststyle">
+                        <li class="facebook"><a href="https://www.facebook.com/neeraj.jawahirani/"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-facebook">
+                                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                                </svg></a>
+                        </li>
+                        <li class="instagram"><a href="https://www.instagram.com/neeraj_jawahirani_/"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram">
+                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                                </svg></a>
+                        </li>
+                        <li class="linkedin"><a href="https://www.linkedin.com/in/neeraj-j-71841a12a/?_l=en_US"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-linkedin">
+                                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                                    <rect x="2" y="9" width="4" height="12"></rect>
+                                    <circle cx="4" cy="4" r="2"></circle>
+                                </svg></a>
+                        </li>
+                        <li class="mail"><a href="mailto:neerajjawahirani@gmail.com"><i data-feather="mail"></i></a>
+                        </li>
+                        
+                    </ul>
+                </div>
+                <!-- end -->
+            </div>
+        </div>
+    </div>
+    <main class="main-page-wrapper">
+
+        <!-- Start Slider Area -->
+        <div id="home" class="rn-slider-area">
+            <div class="slide slider-style-1">
+                <div class="container">
+                    <div class="row row--30 align-items-center">
+                        <div class="order-2 order-lg-1 col-lg-7 mt_md--50 mt_sm--50 mt_lg--30">
+                            <div class="content">
+                                <div class="inner">
+                                    <h1 class="title">Hi👋, I’m <span>Neeraj J</span><br>
+                                        <span class="header-caption" id="page-top">
+                                            <!-- type headline start-->
+                                            <span class="cd-headline clip is-full-width">
+                                                <span>a </span>
+                                        <!-- ROTATING TEXT -->
+                                          <span class="cd-words-wrapper">
+                                            <b class="is-visible">Data scientist</b>
+                                            <b class="is-hidden">Engineer</b>
+                                            <b class="is-hidden">Problem Solver</b>
+                                            <b class="is-hidden">Personality Developer</b>
+                                          </span>
+                                        </span>
+                                        <!-- type headline end -->
+                                        </span>
+                                    </h1>
+
+                                    <div>
+                                        <p class="description">I'm a data scientist, software developer, and tech enthusiast with a Master’s in Data Science from Florida State University, passionate about bridging the gap between raw data and actionable insights. With expertise in machine learning, web development, data analytics, Python, SQL, AWS, and AI-powered solutions, I thrive on solving complex problems and building scalable, impactful applications. Beyond tech, I express creativity through cooking, dance, poetry, and shayaris, believing that the best innovations come from blending analytical thinking with artistic intuition. I enjoy working on big data processing, cloud computing, and predictive modeling to drive intelligent decision-making. Let’s connect and create something extraordinary! 🚀</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-7 col-xl-7 col-md-7 col-sm-7 col-12">
+                                        <div class="social-share-inner-left">
+                                            <span class="title">find me on</span>
+                                            <ul class="social-share d-flex liststyle">
+                                                <li class="mail"><a href="mailto:neerajjawahirani@gmail.com"><i data-feather="mail"></i></a>
+                                                </li>
+                                                <li class="linkedin"><a href="https://www.linkedin.com/in/neeraj-j-71841a12a/?_l=en_US"><i data-feather="linkedin"></i></a></li>
+                                                <li class="linkedin"><a href="https://github.com/NeerajJ16/"><i data-feather="github"></i></a></li>
+                                                <li class="facebook"><a href="https://www.facebook.com/neeraj.jawahirani/"><i data-feather="facebook"></i></a>
+                                                </li>
+                                                <li class="instagram"><a href="https://www.instagram.com/neeraj_jawahirani_/"><i data-feather="instagram"></i></a>
+                                                </li>
+                                                
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="order-1 order-lg-2 col-lg-5">
+                            <div class="thumbnail">
+                                <div class="inner">
+                                    <img src="images/3d/Saly-13.png" alt="Personal Portfolio Images">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Skills-->
+        <div class="rn-service-area rn-section-gap section-separator" id="features">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-title text-left" data-aos="fade-up" data-aos-duration="500" data-aos-delay="100" data-aos-once="true">
+                            <span class="subtitle">Skills</span>
+                            <h2 class="title">What I Do</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row--25 mt_md--10 mt_sm--10">
+
+                    <!-- Start Single Service -->
+                    <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="100" data-aos-once="true" class="col-lg-6 col-xl-6 col-md-6 col-sm-12 col-12 mt--50 mt_md--30 mt_sm--30">
+                        <div class="rn-service">
+                            <div class="inner">
+                                <div class="icon">
+                                    <i data-feather="code"></i>
+                                </div>
+                                <div class="content">
+                                    <h4 class="title"><a href="#features">Technical</a></h4>
+                                    <p class="description">C, C++, Java, Advanced Java, Python (NumPy, Pandas, Matplotlib, Plotly, Seaborn), R, PHP</p>
+                                </div>
+                            </div>
+                            <a class="over-link" href="#features"></a>
+                        </div>
+                    </div>
+                    <!-- End SIngle Service -->
+                     <!-- Start Single Service -->
+                    <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="100" data-aos-once="true" class="col-lg-6 col-xl-6 col-md-6 col-sm-12 col-12 mt--50 mt_md--30 mt_sm--30">
+                        <div class="rn-service">
+                            <div class="inner">
+                                <div class="icon">
+                                    <i data-feather="codesandbox"></i>
+                                </div>
+                                <div class="content">
+                                    <h4 class="title"><a href="#features">Machine Learning & AI</a></h4>
+                                    <p class="description">Scikit-learn, XGBoost, TensorFlow, PyTorch, NLTK, OpenCV, LangChain, Natural Language Processing (NLP),Generative AI, Large Language Models (LLMs)</p>
+                                 </div>
+                            </div>
+                            <a class="over-link" href="#features"></a>
+                        </div>
+                    </div>
+                    <!-- End SIngle Service -->
+                     <!-- Start Single Service -->
+                    <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="100" data-aos-once="true" class="col-lg-6 col-xl-6 col-md-6 col-sm-12 col-12 mt--50 mt_md--30 mt_sm--30">
+                        <div class="rn-service">
+                            <div class="inner">
+                                <div class="icon">
+                                    <i data-feather="cloud"></i>
+                                </div>
+                                <div class="content">
+                                    <h4 class="title"><a href="#features">Tools & Cloud</a></h4>
+                                    <p class="description">Git, Microsoft Office, Power BI, Tableau, AWS (S3, Redshift), Snowflake, Microsoft Azure, Bitbucket</p>
+                                </div>
+                            </div>
+                            <a class="over-link" href="#features"></a>
+                        </div>
+                    </div>
+                    <!-- End SIngle Service -->
+                      <!-- Start Single Service -->
+                    <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="100" data-aos-once="true" class="col-lg-6 col-xl-6 col-md-6 col-sm-12 col-12 mt--50 mt_md--30 mt_sm--30">
+                        <div class="rn-service">
+                            <div class="inner">
+                                <div class="icon">
+                                    <i data-feather="database"></i>
+                                </div>
+                                <div class="content">
+                                    <h4 class="title"><a href="#features">Databases </a></h4>
+                                    <p class="description">SQL, SQLite, NoSQL, MongoDB, PostgreSQL, Amazon RDS, Hadoop</p>
+                                </div>
+                            </div>
+                            <a class="over-link" href="#features"></a>
+                        </div>
+                    </div>
+                    <!-- End SIngle Service -->
+                    
+                    <!-- Start Single Service -->
+                    <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="100" data-aos-once="true" class="col-lg-6 col-xl-6 col-md-6 col-sm-12 col-12 mt--50 mt_md--30 mt_sm--30">
+                        <div class="rn-service">
+                            <div class="inner">
+                                <div class="icon">
+                                    <i data-feather="tv"></i>
+                                </div>
+                                <div class="content">
+                                    <h4 class="title"><a href="#features">Web Development </a></h4>
+                                    <p class="description">HTML, CSS, Bootstrap, Wordpress, Django</p>
+                                </div>
+                            </div>
+                            <a class="over-link" href="#features"></a>
+                        </div>
+                    </div>
+                    <!-- End SIngle Service -->
+                    <!-- Start Single Service -->
+                    <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="100" data-aos-once="true" class="col-lg-6 col-xl-6 col-md-6 col-sm-12 col-12 mt--50 mt_md--30 mt_sm--30">
+                        <div class="rn-service">
+                            <div class="inner">
+                                <div class="icon">
+                                    <i data-feather="user"></i>
+                                </div>
+                                <div class="content">
+                                    <h4 class="title"><a href="#features">Soft Skills</a></h4>
+                                    <p class="description">Focused, Flexible, Work under Pressure</p>
+                                </div>
+                            </div>
+                            <a class="over-link" href="#features"></a>
+                        </div>
+                    </div>
+                    <!-- End SIngle Service -->
+                </div>
+            </div>
+        </div>
+
+        <div class="rn-resume-area rn-section-gap section-separator" id="resume">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-title text-center">
+                            <span class="subtitle"></span>
+                            <h2 class="title">My Resume</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt--45">
+                    <div class="col-lg-12">
+                        <ul class="rn-nav-list nav nav-tabs" id="myTabs" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="education-tab" data-toggle="tab" href="#education" role="tab" aria-controls="education" aria-selected="true">education</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="experience-tab" data-toggle="tab" href="#experience" role="tab" aria-controls="experience" aria-selected="false">Experiences</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="professional-tab" data-toggle="tab" href="#professional" role="tab" aria-controls="professional" aria-selected="false">Certifications</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="interview-tab" data-toggle="tab" href="#interview" role="tab" aria-controls="interview" aria-selected="false">Leadership Activties</a>
+                            </li>
+                        </ul>
+                        <!-- Start Tab Content Wrapper  -->
+
+
+                        <!--Education-->
+                        <div class="rn-nav-content tab-content" id="myTabContents">
+                            <!-- Start Single Tab Education  -->
+                            <div class="tab-pane show active fade single-tab-area" id="education" role="tabpanel" aria-labelledby="education-tab">
+                                <div class="personal-experience-inner mt--40">
+                                    <div class="row">
+                                        <!-- Start Skill List Area  -->
+                                        <div class="col-lg-12 col-md-12 col-12">
+                                            <div class="content">
+                                             
+                                                <div class="experience-list">
+
+                                                    <!-- Start Single List  -->
+                                                    <div class="resume-single-list">
+                                                        <div class="inner">
+                                                            <div class="heading">
+                                                                <div class="title">
+                                                                    <h4>Masters of Science in Data Science-Computer Science</h4>
+                                                                    <span>August 2023 - May 2025</span>
+                                                                    <span><b>Relevant Coursework</b>:<i>Data Mining, Machine Learning, Advance Data Science, Data Ethics, Cybersecurity in Data Science</i></span>
+                                                                </div>
+                                                                <div class="date-of-time">
+                                                                    <span>3.9 CGPA</span>
+                                                                </div>
+                                                            </div>
+                                                            <p class="description">Florida State University<br>Tallahassee, FL, United States</p>
+                                                        </div>
+                                                    </div>
+                                                    <!-- End Single List  -->
+
+                                                     <!-- Start Single List  -->
+                                                     <div class="resume-single-list">
+                                                        <div class="inner">
+                                                            <div class="heading">
+                                                                <div class="title">
+                                                                    <h4>Bachelors of Engineering in Information Technology</h4>
+                                                                    <span>June 2018 - May 2022</span>
+                                                                    <span><b>Relevant Coursework</b>:<i>Artifical Intelligence, Data Structures and Algorithims, Cloud Computing, Database Management System</i></span>
+                                                                </div>
+                                                                <div class="date-of-time">
+                                                                    <span>9.1 CGPA</span>
+                                                                </div>
+                                                            </div>
+                                                            <p class="description">Savitribai Phule Pune University.<br>
+                                                                Pune, MH, India</p>
+                                                        </div>
+                                                    </div>
+                                                    <!-- End Single List  -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End Skill List Area  -->
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Single Tab  -->
+
+
+                            <!--Projects-->
+                            <!-- Start Single Tab Certifications  -->
+                            <!-- Start Single Tab  -->
+                            <div class="tab-pane fade" id="professional" role="tabpanel" aria-labelledby="interview-tab">
+                                <div class="personal-experience-inner mt--40">
+                                    <div class="row">
+                                        <!-- Start Skill List Area  -->
+                                        <div class="col-lg-12 col-md-12 col-12">
+                                            <div class="content">
+                                                <span class="subtitle"></span>
+                                                <h4 class="maintitle"></h4>
+                                                <div class="experience-list">
+
+                                                    <!-- Start Single List  -->
+                                                    <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="300" data-aos-once="true" class="resume-single-list">
+                                                            <div class="heading">
+                                                                <div class="title">
+                                                                    <ul style="list-style-type:disc;">
+                                                                        <li class="description">Data Engineer - Data Integration by IBM-Techademy</li>
+                                                                        <li class="description">Software Development and Life Cycle by IBM-Techademy</li>
+                                                                        <li class="description">Cloud Computing with AWS</li>
+                                                                        <li class="description">Data Science : R Programming Complete Diploma 2023</li>
+                                                                        <li class="description">Web Penetration Testing</li>
+                                                                        <li class="description">Database Management with SQL</li>
+                                                                    </ul>
+                                                                </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- End Single List  -->
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End Skill List Area  -->
+
+                                        <!-- Start Skill List Area 2nd  -->
+
+                                        <!-- End Skill List Area  -->
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Single Tab  -->
+                            <!-- End Single Tab  -->
+
+
+                            <!--Experince Jobs-->
+                            <!-- Start Single Tab Experiences  -->
+                            <div class="tab-pane fade" id="experience" role="tabpanel" aria-labelledby="experience-tab">
+            
+                                <div class="personal-experience-inner mt--40">
+                                    <div class="row">
+                                        <!-- Start Skill List Area  -->
+                                        <div class="col-lg-12 col-md-12 col-12">
+                                            <div class="content">
+                                                <div class="experience-list">
+                                                    
+
+                                                    <div class="resume-single-list">
+                                                        <div class="inner">
+                                                            <div class="heading">
+                                                                <div class="title">
+                                                                    <h4>Center for Ocean-Atmospheric Prediction Studies - Tallahassee, FLorida</h4>
+                                                                    <h7>Web Developer / Analyst </h7><br>
+                                                                    <h7>September 2024 - April 2025 </h7>
+                                                                </div>
+                                                            </div>
+                                                            <p class="description">
+                                                                <ul style="list-style-type:disc;">
+                                                                    <li class="description"> Built and scheduled automated data pipelines (ETL) to process 50K+ daily records using Python and SQL to collect, clean, and store voyage data from 30+ marine vessels, replacing manual collection and reducing ingestion time by 80%.</li>
+                                                                    <li class="description">Refactored an older PHP/SQL system that processed daily voyage data from marine vessels by breaking the code into clearer parts and improving SQL queries, which sped up data access by around 40%.
+                                                                        </li>
+                                                                    <li class="description"> Reconfigured CI/CD workflows using Bitbucket Pipelines to automate testing and deployment of web applications, reducing manual steps and cutting deployment-related issues by over 50%.</li>
+                                                                    <li class="description">  Created Python scripts to apply data validation rules (null, range, and type checks), reducing downstream data quality issues by 25%.</li>
+                                                                  </ul> 
+                                                                </p>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="resume-single-list">
+                                                        <div class="inner">
+                                                            <div class="heading">
+                                                                <div class="title">
+                                                                    <h4>Data Morphosis - Pune, India</h4>
+                                                                    <h7>Data Engineer</h7><br>
+                                                                    <h7>January 2022 - July 2023 </h7>
+                                                                </div>
+                                                            </div>
+                                                            <p class="description">
+                                                                <ul style="list-style-type:disc;">
+                                                                    <li class="description">Built and maintained ETL pipelines using Python, SQL, and Spark to clean, transform, and load more than 500K structured and semi-structured records into AWS S3, enabling downstream data access for reporting and analytics.</li>
+                                                                    <li class="description">Collaborated with data and infrastructure teams to build PySpark workflows on Hadoop for processing 10–50GB datasets, with outputs delivered to Azure Blob Storage as part of a cloud migration effort. Managed job scheduling and monitoring using Airflow.</li>
+                                                                    <li class="description">Tuned relational models and optimized MySQL queries by restructuring tables and indexes, reducing reporting latency by 40%.</li>
+                                                                    <li class="description">Created Python scripts to convert unstructured event and sensor data into analytics-ready tables, improving Power BI-based dashboards and accelerating reporting by 30% for IoT and user analytics projects.</li>
+                                                                  </ul> 
+                                                                </p>
+                                                            
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="resume-single-list">
+                                                        <div class="inner">
+                                                            <div class="heading">
+                                                                <div class="title">
+                                                                    <h4>Geniobits Private LTD - Pune, India</h4>
+                                                                    <h7>Web Data Analyst & Team Lead Intern </h7><br>
+                                                                    <h7>May 2021 - December 2021 </h7>
+                                                                </div>
+                                                            </div>
+                                                            <p class="description">
+                                                                <ul style="list-style-type:disc;">
+                                                                    <li class="description">Led a distributed team of interns to preprocess and label more than 500K records using PySpark, and took ownership of automating ETL tasks in Airflow by refactoring and deploying new DAGs, which improved pipeline reliability and reduced manual work.</li>
+                                                                    <li class="description">Delivered 5 dashboards using Power BI and Python, redeployed on AWS to filter 100K+ records and cut reporting time by 50%.</li>
+                                                                    <li class="description"> Trained two PyTorch models for student performance prediction and engagement scoring, improving accuracy from 76% to 87%, and deployed them via REST APIs in a demo web app used by internal stakeholders for early feedback and iterative testing.</li>
+                                                                    <li class="description">Containerized ML pipelines with Docker for faster deployment, reducing production setup time by 60% across environments.</li>
+                                                                  </ul> 
+                                                                </p>
+                                                        </div>
+                                                    </div>
+                                                   
+
+                                                   
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End Skill List Area  -->
+                                    </div>
+                                </div>
+                                        <!-- Start Skill List Area 2nd  -->
+                            <!-- End Single Tab  -->
+                            </div>
+
+                            <!--Extra Cricular Jobs-->
+                            <!-- Start Single Tab  -->
+                            <div class="tab-pane fade" id="interview" role="tabpanel" aria-labelledby="interview-tab">
+                                <div class="personal-experience-inner mt--40">
+                                    <div class="row">
+                                        <!-- Start Skill List Area  -->
+                                        <div class="col-lg-12 col-md-12 col-12">
+                                            <div class="content">
+                                                <span class="subtitle"></span>
+                                                <h4 class="maintitle"></h4>
+                                                <div class="experience-list">
+
+                                                    <!-- Start Single List  -->
+                                                    <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="300" data-aos-once="true" class="resume-single-list">
+                                                            <div class="heading">
+                                                                <div class="title">
+                                                                    <h4>Soft Skills Club Head</h4>
+                                                                    <span>Information Technology Student Association (2019-2020)</span>
+                                                                </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- End Single List  -->
+
+                                                    <!-- Start Single List  -->
+                                                    <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="700" data-aos-once="true" class="resume-single-list">
+                                                            <div class="heading">
+                                                                <div class="title">
+                                                                    <h4>President and Founder</h4>
+                                                                    <span>Toastmaster DYPCOE (2019-2021)</span>
+                                                                </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- End Single List  -->
+
+                                                    <!-- Start Single List  -->
+                                                    <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="500" data-aos-once="true" class="resume-single-list">
+                                                            <div class="heading">
+                                                                <div class="title">
+                                                                    <h4>Management Head</h4>
+                                                                    <span>Information Technology Student Association (2021-2022)</span>
+                                                                </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- End Single List  -->
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End Skill List Area  -->
+
+                                        <!-- Start Skill List Area 2nd  -->
+
+                                        <!-- End Skill List Area  -->
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Single Tab  -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Projects-->
+        <div class="rn-testimonial-area rn-section-gap section-separator" id="testimonial">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-title text-center">
+                            <span class="subtitle">My</span>
+                            <h2 class="title">Projects</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="testimonial-activation testimonial-pb mb--30">
+                            <!-- Start Single testiminail -->
+                            <div class="testimonial mt--50 mt_md--40 mt_sm--40">
+                                <div class="inner">
+                                    
+                                    <div class="card-description">
+                                        <div class="title-area">
+                                            <div class="title-info">
+                                                <h3 class="title">AI-Powered News Summarizer</h3>
+                                                <span class="date">LangChain</span>
+                                            </div>
+                                            <div class="rating">
+                                                 <img src="images/icons/rating.png" alt="rating-image">
+                                                <img src="images/icons/rating.png" alt="rating-image">
+                                                <img src="images/icons/rating.png" alt="rating-image">
+                                                <img src="images/icons/rating.png" alt="rating-image">
+                                                <img src="images/icons/rating.png" alt="rating-image">
+                                            </div>
+                                        </div>
+                                        <div class="seperator"></div>
+                                        <p class="description">
+                                            <ul>
+                                                <li class="description">
+                                                    Engineered a real-time news summarization system using LangChain and GPT-3.5 to process articles from 20+ online sources. Tuned prompts, extracted keywords, and cleaned inputs to rank and summarize the most relevant articles using a scoring-based method.
+                                                </li>
+                                                <li class="description">
+                                                     Created a responsive Streamlit web app comparing extractive (TextRank) and generative (LLM) summaries. Achieved a 30% improvement in summary consistency based on user testing and delivered concise, real-time takeaways for faster content consumption.
+                                                </li>
+                                            </ul>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--End Single testiminail -->
+                            <!-- Start Single testiminail -->
+                            <div class="testimonial mt--50 mt_md--40 mt_sm--40">
+                                <div class="inner">
+                                    
+                                    <div class="card-description">
+                                        <div class="title-area">
+                                            <div class="title-info">
+                                                <h3 class="title">Data-Driven Fitness Tracker with Predictive Modeling</h3>
+                                                <span class="date">Python and Data Analysis</span>
+                                            </div>
+                                            <div class="rating">
+                                                 <img src="images/icons/rating.png" alt="rating-image">
+                                                <img src="images/icons/rating.png" alt="rating-image">
+                                                <img src="images/icons/rating.png" alt="rating-image">
+                                                <img src="images/icons/rating.png" alt="rating-image">
+                                                <img src="images/icons/rating.png" alt="rating-image">
+                                            </div>
+                                        </div>
+                                        <div class="seperator"></div>
+                                        <p class="description">
+                                            <ul>
+                                                <li class="description">
+                                                    Developed a fitness tracking application using Python, Pandas, and Scikit-learn to analyze 100+ user profiles. Trained a decision-tree model to recommend diet and workout plans, improving plan matching accuracy by 30% based on simulated user data.
+                                                </li>
+                                                <li class="description">
+                                                    Configured a modular system with a mobile-friendly frontend, integrating Matplotlib for real-time metric visualizations. Achieved a 40% increase in model accuracy through validation and ensured high responsiveness across devices during testing.
+                                                </li>
+                                            </ul>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--End Single testiminail -->
+                            <!-- Start Single testiminail -->
+                            <div class="testimonial mt--50 mt_md--40 mt_sm--40">
+                                <div class="inner">
+                                    
+                                    <div class="card-description">
+                                        <div class="title-area">
+                                            <div class="title-info">
+                                                <h3 class="title">Twitter Sentiment Analysis</h3>
+                                                <span class="date">Python Machine Learning</span>
+                                            </div>
+                                            <div class="rating">
+                                                 <img src="images/icons/rating.png" alt="rating-image">
+                                                <img src="images/icons/rating.png" alt="rating-image">
+                                                <img src="images/icons/rating.png" alt="rating-image">
+                                                <img src="images/icons/rating.png" alt="rating-image">
+                                                <img src="images/icons/rating.png" alt="rating-image">
+                                            </div>
+                                        </div>
+                                        <div class="seperator"></div>
+                                        <p class="description">
+                                            <ul>
+                                                <li class="description">
+                                                    Transformed 1M+ Twitter posts into actionable sentiment insights by building a machine learning model using Python (Pandas,
+                                                    NumPy, Seaborn) and NLP techniques, delivering impactful sentiment trend analysis and visualizations that enhanced overall
+                                                    social media monitoring by 25% and significantly improved real-time sentiment tracking for better audience engagement.
+                                                </li>
+                                                <li class="description">
+                                                    Optimized the sentiment classification model with precision-focused feature engineering techniques, enabling real-time
+                                                    sentiment tracking and supporting data-driven decision-making, improving model accuracy by 20% in social media analytics.
+                                                </li>
+                                            </ul>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--End Single testiminail -->
+                                                        <!-- Start Single testiminail -->
+                                                        <div class="testimonial mt--50 mt_md--40 mt_sm--40">
+                                                            <div class="inner">
+                                                                
+                                                                <div class="card-description">
+                                                                    <div class="title-area">
+                                                                        <div class="title-info">
+                                                                            <h3 class="title">Body Performance Analysis </h3>
+                                                                            <span class="date">Regression Analysis</span>
+                                                                        </div>
+                                                                        <div class="rating">
+                                                                             <img src="images/icons/rating.png" alt="rating-image">
+                                                                            <img src="images/icons/rating.png" alt="rating-image">
+                                                                            <img src="images/icons/rating.png" alt="rating-image">
+                                                                            <img src="images/icons/rating.png" alt="rating-image">
+                                                                            <img src="images/icons/rating.png" alt="rating-image">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="seperator"></div>
+                                                                    <p class="description">
+                                                                        <ul>
+                                                                            <li class="description">
+                                                                                Analyzed a dataset of over 1,000 entries from the Korean Sports Promotion Foundation, exploring the significant relationship
+between age, physical activities, and grip strength, yielding valuable insights for better athletic performance improvement.
+                                                                            </li>
+                                                                            <li class="description">
+                                                                                Applied advanced regression analysis and data visualization techniques, identifying key predictors of grip strength, which
+directly informed athletic training programs, positively impacting over 200 athletes’ performance, tailored training plans.
+                                                                            </li>
+                                                                        </ul>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!--End Single testiminail -->
+                                                        <div class="testimonial mt--50 mt_md--40 mt_sm--40">
+                                                            <div class="inner">
+                                                                
+                                                                <div class="card-description">
+                                                                    <div class="title-area">
+                                                                        <div class="title-info">
+                                                                            <h3 class="title">Distributed Storage System using IPFS</h3>
+                                                                            <span class="date">Django and IPFS API</span>
+                                                                        </div>
+                                                                        <div class="rating">
+                                                                            <img src="images/icons/rating.png" alt="rating-image">
+                                                                            <img src="images/icons/rating.png" alt="rating-image">
+                                                                            <img src="images/icons/rating.png" alt="rating-image">
+                                                                            <img src="images/icons/rating.png" alt="rating-image">
+                                                                            <img src="images/icons/rating.png" alt="rating-image">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="seperator"></div>
+                                                                    <p class="discription">
+                                                                        <ul>
+                                                                            <li class="description">Engineered a robust storage system using Django and IPFS, efficiently managing over 2TB of data across 100+ nodes while
+                                                                                ensuring secure, scalable, and efficient file storage with 99.9% uptime, benefiting 500+ global users worldwide.</li>
+                                                                                <li class="description">
+                                                                                    Published a comprehensive research paper titled "Distributed Storage System Using IPFS" in the International Journal of
+Research and Analytical Reviews (IJRAR), contributing valuable insights to the field (Paper ID: IJRAR1CNP041).
+                                                                                </li>
+                                                                        </ul>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!--End Single testiminail -->
+                            <!-- Start Single testiminail -->
+                            <div class="testimonial mt--50 mt_md--40 mt_sm--40">
+                                <div class="inner">
+                                    
+                                    <div class="card-description">
+                                        <div class="title-area">
+                                            <div class="title-info">
+                                                <h3 class="title">Java Inventory Management System</h3>
+                                                <span class="date">Java, SQL, JDBC</span>
+                                            </div>
+                                            <div class="rating">
+                                                 <img src="images/icons/rating.png" alt="rating-image">
+                                                <img src="images/icons/rating.png" alt="rating-image">
+                                                <img src="images/icons/rating.png" alt="rating-image">
+                                                <img src="images/icons/rating.png" alt="rating-image">
+                                                <img src="images/icons/rating.png" alt="rating-image">
+                                            </div>
+                                        </div>
+                                        <div class="seperator"></div>
+                                        <p class="discription">
+                                            <ul>
+                                                <li class="description">
+                                                    Architected and deployed a Java-based SQL solution, enhancing inventory management efficiency by 50% and cutting manual tracking errors by 30%.
+                                                </li>
+                                                <li class="description">
+                                                    Developed and implemented automated reporting tools, providing real-time insights into inventory levels and trends, leading to a 20% increase in operational productivity and reducing stock discrepancies by 25%.
+                                                </li>
+                                            </ul>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--End Single testiminail -->
+                            <!-- Start Single testiminail -->
+                            <div class="testimonial mt--50 mt_md--40 mt_sm--40">
+                                <div class="inner">
+                                    
+                                    <div class="card-description">
+                                        <div class="title-area">
+                                            <div class="title-info">
+                                                <h3 class="title">Ecommerce Website</h3>
+                                                <span class="date">MEAN Stack Development</span>
+                                            </div>
+                                            <div class="rating">
+                                              <img src="images/icons/rating.png" alt="rating-image">
+                                                <img src="images/icons/rating.png" alt="rating-image">
+                                                <img src="images/icons/rating.png" alt="rating-image">
+                                                <img src="images/icons/rating.png" alt="rating-image">
+                                                <img src="images/icons/rating.png" alt="rating-image">
+                                            </div>
+                                        </div>
+                                        <div class="seperator"></div>
+                                        <p class="discription">
+                                            <ul>
+                                                <li class="description">
+                                                    Created a scalable platform with Angular and MongoDB supporting over 10000 concurrent users. 
+                                                </li>
+                                                <li class="description">
+                                                    Created a scalable platform with Angular and MongoDB supporting over 10000 concurrent users. 
+                                                </li>
+                                            </ul>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--End Single testiminail -->
+                                                        <!-- Start Single testiminail -->
+                                                        <div class="testimonial mt--50 mt_md--40 mt_sm--40">
+                                                            <div class="inner">
+                                                                
+                                                                <div class="card-description">
+                                                                    <div class="title-area">
+                                                                        <div class="title-info">
+                                                                            <h3 class="title">Python Billing System</h3>
+                                                                            <span class="date">Made using : Python</span>
+                                                                        </div>
+                                                                        <div class="rating">
+                                                                             <img src="images/icons/rating.png" alt="rating-image">
+                                                                            <img src="images/icons/rating.png" alt="rating-image">
+                                                                            <img src="images/icons/rating.png" alt="rating-image">
+                                                                            <img src="images/icons/rating.png" alt="rating-image">
+                                                                            <img src="images/icons/rating.png" alt="rating-image">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="seperator"></div>
+                                                                    <p class="discription">
+                                                                        With this project I learned about python framewoeks, file management using python and amking UI/UX using tkinter package.<br>
+                                                                        <a href="https://github.com/NeerajJ16/python-bill-system">Github Link</a>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!--End Single testiminail -->
+                                                                                    <!-- Start Single testiminail -->
+                            <div class="testimonial mt--50 mt_md--40 mt_sm--40">
+                                <div class="inner">
+                                    
+                                    <div class="card-description">
+                                        <div class="title-area">
+                                            <div class="title-info">
+                                                <h3 class="title">Personal BlogSite</h3>
+                                                <span class="date">Django Web Development</span>
+                                            </div>
+                                            <div class="rating">
+                                                 <img src="images/icons/rating.png" alt="rating-image">
+                                                <img src="images/icons/rating.png" alt="rating-image">
+                                                <img src="images/icons/rating.png" alt="rating-image">
+                                                <img src="images/icons/rating.png" alt="rating-image">
+                                                <img src="images/icons/rating.png" alt="rating-image">
+                                            </div>
+                                        </div>
+                                        <div class="seperator"></div>
+                                        <p class="discription">
+                                            With this project I learned to built apps in django and fetch data from database sqlite into frontend.Also I learned to host django web based applications into herokuapp server.<br>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--End Single testiminail -->
+                            <!-- Start Single testiminail -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!--Images Extra-->
+        <div class="rn-testimonial-area rn-section-gap section-separator" id="extrac">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-title text-center">
+                            <span class="subtitle">My</span>
+                            <h2 class="title">Extra Cirriculars</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="testimonial-activation testimonial-pb mb--30">
+                            <!-- Start Single testiminail -->
+                            <div class="testimonial mt--50 mt_md--40 mt_sm--40">
+                                <div class="inner">
+                                    
+                                    <div class="card-description">
+                                        <div class="title-area">
+                                            <div class="title-info">
+                                                <h3 class="title">Host and Organizer at Gadget Gyaan</h3>
+                                            </div>
+                                        </div>
+                                        <div class="seperator"></div>
+                                       
+                                        <img src="images/image1.jpg" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <!--End Single testiminail -->
+                            <!-- Start Single testiminail -->
+                            <div class="testimonial mt--50 mt_md--40 mt_sm--40">
+                                <div class="inner">
+                                    
+                                    <div class="card-description">
+                                        <div class="title-area">
+                                            <div class="title-info">
+                                                <h3 class="title">A speech for Personality Development</h3>
+                                            </div>
+                                        </div>
+                                        <div class="seperator"></div>
+                                        
+                                        <img src="images/image3.jpg" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <!--End Single testiminail -->
+                            <!-- Start Single testiminail -->
+                            <div class="testimonial mt--50 mt_md--40 mt_sm--40">
+                                <div class="inner">
+                                    
+                                    <div class="card-description">
+                                        <div class="title-area">
+                                            <div class="title-info">
+                                                <h3 class="title">Teaching Assistant at Government School</h3>
+                                            </div>
+                                        </div>
+                                        <div class="seperator"></div>
+                                        
+                                        <img src="images/image2.jpg" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <!--End Single testiminail -->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!--Contact Session-->
+        <div class="rn-contact-area rn-section-gap section-separator" id="contacts">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-title text-center">
+                            <span class="subtitle">Contact</span>
+                            <h2 class="title">Contact With Me</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt--50 mt_md--40 mt_sm--40 mt-contact-sm">
+                    <!-- Contact Info Section -->
+                    <div class="col-lg-5">
+                        <div class="contact-about-area">
+                            <div class="thumbnail">
+                                <img src="images/3d/Saly-31.png" height="5px" width="5px" alt="contact-img">
+                            </div>
+                            <div class="title-area">
+                                <h4 class="title">Neeraj Jawahirani</h4>
+                                <span>Developer</span>
+                            </div>
+                            <div class="description">
+                                <p>Connect with me via mail or phone</p>
+                                <span class="phone">Phone: <a href="tel:+18503003851">+18503003851</a></span><br>
+                                <span class="mail">Email: <a href="mailto:neerajjawahirani@gmail.com">neerajjawahirani@gmail.com</a></span>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <!-- Contact Form Section -->
+                    <div class="col-lg-7">
+                        <div class="contact-form">
+                            <form id="contact-form" name="contact" method="POST" data-netlify="true">
+                                <div class="form-group">
+    
+                                    <input type="text" id="name" name="name" placeholder="Enter your name" required style="background-color: #1c1e22; color: #ffffff; border: 1px solid #ccc; padding: 10px; border-radius: 4px; width: 100%; box-sizing: border-box;font-size: 14px;">
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" id="email" name="email" placeholder="Enter your email" required style="background-color: #1c1e22; color: #ffffff; border: 1px solid #ccc; padding: 10px; border-radius: 4px; width: 100%; box-sizing: border-box;font-size: 14px;">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" id="subject" name="subject" placeholder="Enter subject" required style="background-color: #1c1e22; color: #ffffff; border: 1px solid #ccc; padding: 10px; border-radius: 4px; width: 100%; box-sizing: border-box;font-size: 14px;">
+                                </div>
+                                <div class="form-group">
+                                    <textarea id="message" name="message" placeholder="Write your message" rows="5" required style="background-color: #1c1e22; color: #ffffff; border: 1px solid #ccc; padding: 10px; border-radius: 4px; width: 100%; box-sizing: border-box;font-size: 14px;"></textarea>
+                                </div>
+                                <div class="form-group text-center">
+                                    <button type="submit" class="rn-btn">Send Message</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <!-- End Contuct section -->
+
+      
+        <!-- Back to  top Start -->
+        <div class="backto-top">
+            <div>
+                <i data-feather="arrow-up"></i>
+            </div>
+        </div>
+        <!-- Back to top end -->
+    </main>
+        <!-- Start Footer Area -->
+        <div class="rn-footer-area rn-section-gap section-separator">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="footer-area text-center">
+    
+                            <div class="logo">
+                                <a href="index.html">
+                                    <img src="images/NJ.png" alt="logo">
+                                </a>
+                            </div>
+    
+                            <p class="description mt--30">© <script>document.write(new Date().getFullYear())</script> <a target="_blank" href=""> || Made with &#10084; Neeraj Jawahirani</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Footer Area -->
+
+    <!--===========================================================-->
+
+    <!-- JS ============================================ -->
+    <script src="js/vendor/jquery.js"></script>
+    <script src="js/vendor/modernizer.min.js"></script>
+    <script src="js/vendor/feather.min.js"></script>
+    <script src="js/vendor/slick.min.js"></script>
+    <script src="js/vendor/bootstrap.js"></script>
+    <script src="js/vendor/text-type.js"></script>
+    <script src="js/vendor/wow.js"></script>
+    <script src="js/vendor/aos.js"></script>
+    <script src="js/vendor/particles.js"></script>
+    <!-- main JS -->
+    <script src="js/main.js"></script>
 </body>
+
+
+<!-- Mirrored from rainbowit.net/html/inbio/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 18 Feb 2022 14:24:04 GMT -->
 </html>
