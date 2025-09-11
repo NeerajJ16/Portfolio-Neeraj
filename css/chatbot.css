@@ -1,0 +1,295 @@
+/* ===== Neeraj Chatbot – SCOPED STYLES ===== */
+/* Everything lives under #njc so it won’t affect the rest of the site. */
+
+
+
+#njc {
+  --bg:#0a0b10;
+  --fg:#e7ecf2;
+  --muted:#9aa4b2;
+  --panel:rgba(18,20,30,.92);
+  --border:rgba(255,255,255,.10);
+  --acc1:#f95230;
+  --acc2:#fb2c02;
+  --radius:18px;
+  --shadow:0 22px 60px rgba(0,0,0,.55);
+
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 99999;
+  color: var(--fg);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+/* reset only inside widget */
+#njc * { box-sizing: border-box; }
+#njc button { font: inherit; }
+#njc textarea { font: inherit; }
+
+/* Small helper text */
+#njc .sub {
+  font-size: 11.5px;
+  color: rgba(255,255,255,0.8);
+  font-weight: 400;
+  margin-top: 2px;
+}
+
+/* Launcher */
+#njc .chat-launch{
+  position: absolute; /* relative to #njc fixed root */
+  right: 0; bottom: 0;
+  width: 60px; height: 60px; border-radius: 50%;
+  display: grid; place-items: center; border: none; cursor: pointer; color: #fff;
+  background: linear-gradient(135deg,var(--acc2),var(--acc1));
+  box-shadow: var(--shadow);
+  font-size: 24px;
+}
+
+/* Panel wrapper (appears above the launcher) */
+#njc .wrap{
+  position: absolute;
+  right: 0;
+  bottom: 70px;
+  width: 380px;
+  max-width: 95vw;
+  display: none; /* toggled by JS */
+}
+
+/* Panel */
+#njc .panel{
+  display: grid; grid-template-rows: auto 1fr auto;
+  height: 560px; max-height: 78vh;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  backdrop-filter: blur(12px) saturate(120%);
+}
+
+/* Header */
+#njc .head{
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 12px 14px; color: #fff;
+  background: linear-gradient(135deg,var(--acc2),var(--acc1));
+}
+#njc .brand{ font-weight: 800; }
+#njc .x{
+  border: none; background: rgba(255,255,255,.15); color: #fff;
+  width: 32px; height: 32px; border-radius: 10px; cursor: pointer;
+}
+#njc .x:hover{ background: rgba(255,255,255,.25); }
+
+/* Messages area */
+#njc .body{
+  padding: 10px;
+  background: #101114;
+  overflow: auto;
+  display: flex; flex-direction: column;
+  gap: 6px;
+  scroll-behavior: smooth;
+}
+#njc .row{ display: flex; flex-direction: column; margin: 0; }
+#njc .msg{
+  max-width: 92%;
+  padding: 10px 14px;
+  border-radius: 16px;
+  white-space: pre-wrap; word-wrap: break-word;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.04);
+}
+#njc .bot{
+  align-self: flex-start;
+  background: #fff; color: #111;
+  border-radius: 16px 16px 16px 4px;
+}
+#njc .user{
+  align-self: flex-end;
+  background: linear-gradient(135deg,var(--acc2),var(--acc1));
+  color: #fff;
+  border-radius: 16px 16px 4px 16px;
+  border-color: transparent;
+}
+#njc .meta{
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+/* Input bar */
+#njc .input{
+  display: grid; grid-template-columns: 1fr auto; gap: 8px; align-items: center;
+  padding: 10px;
+  border-top: 1px solid var(--border);
+  background: #16171c;
+}
+#njc textarea{
+  resize: none; min-height: 42px; max-height: 140px;
+  padding: 10px 12px; border-radius: 12px; border: 1px solid var(--border);
+  background: #1d1f25; color: #fff; outline: none;
+}
+#njc textarea:focus{ outline: 2px solid var(--acc1); }
+#njc .send{
+  width: 44px; height: 44px; border-radius: 50%; border: none;
+  cursor: pointer; color: #fff; font-size: 18px;
+  background: linear-gradient(135deg,var(--acc2),var(--acc1));
+  display: grid; place-items: center;
+}
+
+/* Compact formatted sections inside bot bubbles */
+#njc .msg.bot .blk{ margin: 0; padding: 0; border: 0; }
+#njc .msg.bot .blk + .blk{ margin-top: 6px; }
+#njc .msg.bot .title{
+  margin: 0; padding-left: 8px; border-left: 3px solid var(--acc1);
+  font-weight: 600; font-size: 14px; color: #0f172a;
+}
+#njc .msg.bot .list{ margin: 2px 0 0 0; padding-left: 16px; list-style: disc; }
+#njc .msg.bot .list li{ margin: 0 0 2px; padding: 0; line-height: 1.32; }
+
+/* Links & code inside bot messages */
+#njc .msg.bot a{
+  color: #0b67ff; text-decoration: none; border-bottom: 1px dotted rgba(0,0,0,.25);
+}
+#njc .msg.bot a:hover{ text-decoration: underline; }
+#njc .msg.bot pre{
+  background: #0f1115; color: #e6edf3; border: 1px solid #2b2f36;
+  border-radius: 12px; padding: 10px; overflow: auto; margin: 6px 0 0 0;
+}
+#njc .msg.bot code{
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  font-size: 13px;
+}
+
+/* Quick actions */
+#njc .quick-actions{
+  display: flex; flex-wrap: wrap; gap: 8px;
+  margin: 10px 0 5px 42px; /* align under bot bubble */
+}
+#njc .quick-actions button{
+  background: linear-gradient(135deg, var(--acc2), var(--acc1));
+  border: none; padding: 6px 12px; border-radius: 14px;
+  font-size: 13px; color: #fff; font-weight: 600; cursor: pointer;
+  transition: transform .1s ease, opacity .2s ease;
+}
+#njc .quick-actions button:hover{
+  transform: translateY(-2px); opacity: .9;
+}
+
+/* Mobile */
+@media (max-width:560px){
+  #njc { right: 12px; bottom: 12px; }
+  #njc .wrap{ left: 12px; right: 0; width: auto; bottom: 70px; }
+  #njc .panel{ height: 74vh; }
+}
+/* === SCOPED, HARD RESET FOR THE CHAT LAUNCHER === */
+/* Wrap your widget with <div id="njc">…</div> as you already did */
+#njc { position: static; z-index: 2147483000; isolation: isolate; }
+
+/* Kill any inherited button styles & pseudo-elements from the theme */
+#njc .chat-launch {
+  all: unset;                            /* wipe inherited button rules */
+  position: fixed; right: 24px; bottom: 24px;
+  width: 64px; height: 64px;
+  display: flex !important;              /* prevent inline/inline-block overrides */
+  align-items: center; justify-content: center;
+  border-radius: 50% !important;         /* force circle */
+  padding: 0 !important;                 /* some themes add padding */
+  border: none !important; outline: none !important;
+  background: linear-gradient(135deg, #fb2c02, #f95230);
+  box-shadow: 0 18px 48px rgba(0,0,0,.45);
+  color: #fff; cursor: pointer;
+  z-index: 2147483001;                   /* above "back to top" */
+  transform: none !important;            /* cancel theme transforms */
+}
+
+/* Remove theme decorations that create the red “pill” look */
+#njc .chat-launch::before,
+#njc .chat-launch::after { content: none !important; }
+
+/* Ensure the icon renders correctly and isn't squashed */
+#njc .chat-launch svg {
+  width: 28px; height: 28px; display: block;
+  color: #fff; pointer-events: none;
+}
+
+/* If your back-to-top button overlaps, nudge the chat up/right a bit */
+@media (min-width: 480px) {
+  .backto-top ~ #njc .chat-launch { bottom: 88px; }
+}
+
+/* Panel/wrapper also get firm sizing so nothing collapses */
+#njc .wrap {
+  position: fixed; right: 24px; bottom: 96px;
+  width: 400px; max-width: 94vw; display: none;
+  z-index: 2147483000;
+}
+#njc .panel {
+  display: grid; grid-template-rows: auto 1fr auto;
+  height: 600px; max-height: 80vh; overflow: hidden;
+  background: rgba(18,20,30,.92);
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: 18px;
+  box-shadow: 0 22px 60px rgba(0,0,0,.55);
+  backdrop-filter: blur(12px) saturate(120%);
+}
+
+/* Keep text areas immune from theme paddings/borders */
+#njc .input textarea {
+  all: unset;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 42px; max-height: 140px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.10);
+  background: #1d1f25; color: #fff;
+}
+#njc .send {
+  all: unset;
+  width: 44px; height: 44px; border-radius: 50%;
+  display: grid; place-items: center; cursor: pointer; color:#fff;
+  background: linear-gradient(135deg, #fb2c02, #f95230);
+}
+
+/* === Force chat above everything === */
+#njc {
+  position: fixed;        /* detach from any parent stacking contexts */
+  inset: 0 auto auto 0;   /* create a root stacking context anchor */
+  z-index: 2147483600;    /* huge */
+  pointer-events: none;   /* so only its children receive events */
+  isolation: isolate;     /* new stacking context above page */
+}
+
+/* Re-enable pointer events for actual UI elements */
+#njc .chat-launch,
+#njc .wrap,
+#njc .panel,
+#njc .head,
+#njc .body,
+#njc .input {
+  pointer-events: auto;
+}
+
+/* Button & panel must also outrank other fixed UIs (back-to-top, modals, etc.) */
+#njc .chat-launch,
+#njc .wrap,
+#njc .panel {
+  z-index: 2147483646 !important;
+}
+
+/* If your theme creates pseudo-elements that overlap, kill them here */
+#njc .chat-launch::before,
+#njc .chat-launch::after,
+#njc .panel::before,
+#njc .panel::after {
+  content: none !important;
+}
+
+/* Optional: if a back-to-top button still overlaps in the corner, lift chat */
+@media (min-width: 480px) {
+  #njc .chat-launch { bottom: 88px !important; right: 24px !important; }
+  #njc .wrap        { bottom: 150px !important; right: 24px !important; }
+}
