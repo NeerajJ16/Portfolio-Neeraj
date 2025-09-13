@@ -33,10 +33,6 @@
     <link rel="stylesheet" href="css/plugins/feature.css">
     <!-- Style css -->
     <link rel="stylesheet" href="css/style.css">
-    <script src="https://static.elfsight.com/platform/platform.js" async></script>
-    
-  <div class="elfsight-app-ee631b79-b8df-4114-ac31-9391198abd1a" data-elfsight-app-lazy></div>
-
   <!-- JSON-LD Structured Data for Google -->
   <script type="application/ld+json">
   {
@@ -1070,14 +1066,6 @@ Research and Analytical Reviews (IJRAR), contributing valuable insights to the f
         
         <!-- End Contuct section -->
 
-      
-        <!-- Back to  top Start -->
-        <div class="backto-top">
-            <div>
-                <i data-feather="arrow-up"></i>
-            </div>
-        </div>
-        <!-- Back to top end -->
     </main>
         <!-- Start Footer Area -->
         <div class="rn-footer-area rn-section-gap section-separator">
@@ -1102,20 +1090,450 @@ Research and Analytical Reviews (IJRAR), contributing valuable insights to the f
 
     <!--===========================================================-->
 
-    <!-- JS ============================================ -->
-    <script src="js/vendor/jquery.js"></script>
-    <script src="js/vendor/modernizer.min.js"></script>
-    <script src="js/vendor/feather.min.js"></script>
-    <script src="js/vendor/slick.min.js"></script>
-    <script src="js/vendor/bootstrap.js"></script>
-    <script src="js/vendor/text-type.js"></script>
-    <script src="js/vendor/wow.js"></script>
-    <script src="js/vendor/aos.js"></script>
-    <script src="js/vendor/particles.js"></script>
-    <!-- main JS -->
-    <script src="js/main.js"></script>
+
+  <!-- JS -->
+  <script src="js/vendor/jquery.js"></script>
+  <script src="js/vendor/modernizer.min.js"></script>
+  <script src="js/vendor/feather.min.js"></script>
+  <script src="js/vendor/slick.min.js"></script>
+  <script src="js/vendor/bootstrap.js"></script>
+  <script src="js/vendor/text-type.js"></script>
+  <script src="js/vendor/wow.js"></script>
+  <script src="js/vendor/aos.js"></script>
+  <script src="js/vendor/particles.js"></script>
+  <script src="js/main.js"></script>
+
+  <!-- Chat widget mount -->
+  <neeraj-chat-widget></neeraj-chat-widget>
+
+  <!-- Chat widget definition (Shadow DOM, isolated) -->
+  <script type="module">
+    // Guard to avoid "already defined" during hot reloads/duplicate includes
+    if (!customElements.get('neeraj-chat-widget')) {
+      class NeerajChatWidget extends HTMLElement {
+        constructor() {
+          super();
+          this.attachShadow({ mode: 'open' });
+
+          this.shadowRoot.innerHTML = `
+            <style>
+              :host { position: fixed; right: 20px; bottom: 20px; z-index: 9999; }
+              :root{
+                --bg:#0a0b10; --fg:#e7ecf2; --muted:#9aa4b2;
+                --panel:rgba(18,20,30,.92); --border:rgba(255,255,255,.10);
+                --acc1:#f95230; --acc2:#fb2c02;
+                --radius:18px; --shadow:0 22px 60px rgba(0,0,0,.55);
+              }
+              .sub { font-size: 11.5px; color: rgba(255,255,255,0.8); font-weight: 400; margin-top: 2px; }
+                button.chat-launch{
+    all: unset; /* wipe global resets */
+    position: fixed; right: 20px; bottom: 20px;
+    width: 60px; height: 60px; border-radius: 50%;
+    display: grid; place-items: center; line-height: 0;
+    background: linear-gradient(135deg,#fb2c02,#f95230);
+    color: #fff; font-size: 24px; cursor: pointer;
+    box-shadow: 0 22px 60px rgba(0,0,0,.55);
+    z-index: 99999; /* above footer and canvas */
+  }
+  .wrap{ z-index: 99999; } /* panel above everything */
+              .chat-launch{
+                position:fixed;right:0;bottom:0;width:60px;height:60px;border-radius:50%;
+                display:grid;place-items:center;border:none;cursor:pointer;color:#fff;
+                background:linear-gradient(135deg,var(--acc2),var(--acc1));box-shadow:var(--shadow);font-size:24px;
+              }
+              .wrap{position:fixed;right:0;bottom:70px;width:380px;max-width:95vw;display:none}
+              .panel{
+                display:grid;grid-template-rows:auto 1fr auto;height:560px;max-height:78vh;
+                background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);
+                box-shadow:var(--shadow);overflow:hidden;backdrop-filter:blur(12px) saturate(120%);
+              }
+              .head{
+                display:flex;justify-content:space-between;align-items:center;padding:12px 14px;color:#fff;
+                background:linear-gradient(135deg,var(--acc2),var(--acc1));
+              }
+               /* Panel with subtle orange glow */
+.panel {
+  background: linear-gradient(145deg, #0f1117, #1a1c24);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 22px 60px rgba(0,0,0,0.7),
+              0 0 15px rgba(249,82,48,0.25); /* orange glow */
+}
+
+/* Messages area with a warmer gradient */
+.body {
+  background: linear-gradient(180deg, #101114, #181a22);
+}
+
+/* Input area with orange top border */
+.input {
+  background: linear-gradient(180deg, #16171c, #1d2028);
+  border-top: 2px solid var(--acc1);
+}
+
+/* Quick actions bar with orange edge */
+.quick-actions {
+  background: linear-gradient(90deg, rgba(20,20,28,0.95), rgba(28,28,36,0.95));
+  padding: 8px 12px;
+  border-radius: 0 0 14px 14px;
+  box-shadow: inset 0 1px 2px rgba(255,255,255,0.05),
+              0 -2px 6px rgba(249,82,48,0.35); /* top orange glow */
+}
+
+/* Hover highlight on quick-action buttons */
+.quick-actions button:hover {
+  transform: translateY(-2px);
+  opacity: 0.95;
+  box-shadow: 0 0 8px rgba(249,82,48,0.6);
+}
+ 
+              .brand{font-weight:800}
+              .x{border:none;background:rgba(255,255,255,.15);color:#fff;width:32px;height:32px;border-radius:10px;cursor:pointer}
+              .x:hover{background:rgba(255,255,255,.25)}
+              .body{padding:10px;background:#101114;overflow:auto;display:flex;flex-direction:column;gap:6px}
+              .msg{max-width:92%;padding:10px 14px;border-radius:16px;white-space:pre-wrap;word-wrap:break-word}
+              .bot{align-self:flex-start;background:#fff;color:#111;border-radius:16px 16px 16px 4px}
+              .user{align-self:flex-end;background:linear-gradient(135deg,var(--acc2),var(--acc1));color:#fff;border-radius:16px 16px 4px 16px}
+              .meta{font-size:11px;color:var(--muted);margin-top:2px}
+              .row{display:flex;flex-direction:column}
+              .input{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;padding:10px;border-top:1px solid var(--border);background:#16171c}
+              textarea{
+                resize:none;min-height:42px;max-height:140px;padding:10px 12px;border-radius:12px;border:1px solid var(--border);
+                background:#1d1f25;color:#fff;outline:none
+              }
+              textarea:focus{outline:2px solid var(--acc1)}
+              .send{
+                width:44px;height:44px;border-radius:50%;border:none;cursor:pointer;color:#fff;font-size:18px;
+                background:linear-gradient(135deg,var(--acc2),var(--acc1));
+                display:grid;place-items:center;
+              }
+              .msg.bot .blk{margin:0;padding:0;border:0}
+              .msg.bot .blk + .blk{margin-top:6px}
+              .msg.bot .title{
+                margin:0;padding-left:8px;border-left:3px solid var(--acc1);
+                font-weight:600;font-size:14px;color:#0f172a;
+              }
+              .msg.bot .list{margin:2px 0 0 0;padding-left:16px;list-style:disc}
+              .msg.bot .list li{margin:0;padding:0;line-height:1.32}
+              .msg.bot a{ color:#0b67ff; text-decoration:none; border-bottom:1px dotted rgba(0,0,0,.25); }
+              .msg.bot a:hover{ text-decoration:underline }
+              .quick-actions { display:flex; flex-wrap:wrap; gap:8px; margin:10px 0 5px 42px; }
+              .quick-actions button {
+                background: linear-gradient(135deg, var(--acc2), var(--acc1));
+                border: none; padding: 6px 12px; border-radius: 14px; font-size: 13px;
+                color: #fff; font-weight: 600; cursor: pointer; transition: transform .1s ease, opacity .2s ease;
+              }
+              .quick-actions button:hover { transform: translateY(-2px); opacity: .9; }
+              .msg.bot pre{
+                background:#0f1115; color:#e6edf3; border:1px solid #2b2f36;
+                border-radius:12px; padding:10px; overflow:auto; margin:6px 0 0 0;
+              }
+              .msg.bot code{ font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; font-size:13px }
+              @media (max-width:560px){ .wrap{ left:12px; right:12px } .panel{ height:74vh } }
+
+              /* ===== Chat “card” skin (light panel + dark header + orange accents) ===== */
+
+/* Panel container */
+.wrap{ right:24px; bottom:96px; z-index:99999; }
+.panel{
+  border-radius:22px; overflow:hidden;
+  border:1px solid rgba(0,0,0,.08);
+  background:#f5f7fb;
+  /* soft drop + warm glow */
+  box-shadow:0 24px 60px rgba(0,0,0,.35), 0 0 16px rgba(249,82,48,.18);
+}
+
+/* Header: dark solid bar */
+.head{
+  background:linear-gradient(180deg,#181a20,#0f1115);
+  padding:14px 16px;
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.head .brand{ font-weight:800; letter-spacing:.2px; }
+.head .sub{ color:rgba(255,255,255,.75); font-size:12px; }
+
+/* Body: light patterned background */
+.body{
+  /* subtle pattern + paper tone */
+  background:
+    radial-gradient(circle at 25px 25px, rgba(0,0,0,.02) 0 24px, transparent 24px) 0 0/56px 56px,
+    radial-gradient(circle at 6px 6px, rgba(0,0,0,.035) 0 3px, transparent 3px) 0 0/28px 28px,
+    #f3f4f7;
+  color:#111;
+}
+
+/* Rows & timestamps */
+.row{ margin:6px 10px; }
+.meta{ color:#8a8f98; }
+
+/* Message bubbles */
+.msg{ position:relative; font-size:15px; line-height:1.5; box-shadow:0 6px 18px rgba(0,0,0,.08); }
+.msg.bot{
+  background:#ffffff; color:#1a1f2e; border-radius:18px; padding:12px 14px;
+}
+.msg.user{
+  background:#15171e; color:#fff; border-radius:18px; padding:10px 14px;
+}
+
+/* Little tails (optional but cute) */
+.msg.bot::after,
+.msg.user::after{ content:""; position:absolute; bottom:10px; border:8px solid transparent; }
+.msg.bot::after { left:-6px;  border-right-color:#ffffff; }
+.msg.user::after{ right:-6px; border-left-color:#15171e; }
+
+/* Code blocks in bot messages */
+.msg.bot pre{
+  background:#0f1115; color:#e6edf3; border:1px solid #2b2f36;
+  border-radius:12px; padding:10px; margin-top:6px;
+}
+
+/* Quick actions: pill buttons on dark strip */
+.quick-actions{
+  background:linear-gradient(90deg, rgba(20,20,28,.96), rgba(28,28,36,.96));
+  padding:12px 16px; border-top:1px solid rgba(255,255,255,.06);
+  border-radius:12px; margin:10px 12px 0; gap:10px;
+  box-shadow:inset 0 1px 2px rgba(255,255,255,.05);
+}
+.quick-actions button{
+  background:#fff; color:#111; border:1px solid rgba(0,0,0,.06);
+  border-radius:999px; padding:8px 12px; font-weight:700; font-size:13px;
+  box-shadow:0 4px 12px rgba(0,0,0,.08); transition:transform .1s ease, box-shadow .2s ease;
+}
+.quick-actions button:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 18px rgba(0,0,0,.12), 0 0 8px rgba(249,82,48,.45);
+}
+
+/* Input: light card w/ orange action */
+.input{
+  background:#f0f2f6; border-top:1px solid rgba(0,0,0,.06);
+  padding:12px; gap:10px;
+}
+textarea{
+  background:#fff; color:#111; border:1px solid rgba(0,0,0,.10);
+  border-radius:16px; min-height:46px; padding:12px 12px;
+}
+textarea::placeholder{ color:#9aa4b2; }
+.send{
+  width:46px; height:46px; border-radius:50%;
+  background:linear-gradient(135deg,var(--acc2),var(--acc1));
+  color:#fff; border:none; display:grid; place-items:center;
+  box-shadow:0 8px 22px rgba(251,44,2,.35);
+}
+
+/* Launcher bubble: orange, glossy */
+button.chat-launch{
+  all: unset;
+  position:fixed; right:20px; bottom:20px; z-index:99999;
+  width:62px; height:62px; border-radius:50%; line-height:0;
+  background:
+    radial-gradient(circle at 30% 30%, #ffd9cf, rgba(255,255,255,.55) 25%, transparent 26%),
+    radial-gradient(circle at 32% 28%, rgba(255,255,255,.8), transparent 50%),
+    linear-gradient(145deg, var(--acc2), var(--acc1));
+  color:#fff; font-size:24px; display:grid; place-items:center; cursor:pointer;
+  box-shadow:0 14px 34px rgba(251,44,2,.42), 0 10px 24px rgba(0,0,0,.35);
+}
+.send {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: none;
+  background: #000;        /* solid black */
+  color: #fff;             /* white arrow */
+  font-size: 18px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  box-shadow: none;        /* remove glow */
+}
+
+            </style>
+
+            <button class="chat-launch" id="openBtn" aria-label="Open chat">💬</button>
+
+            <div class="wrap" id="wrap" part="wrap">
+              <section class="panel">
+                <header class="head">
+                  <div>
+                    <div class="brand">Neeraj’s Assistant</div>
+                    <div class="sub">Built by the user — may sometimes generate incorrect info.</div>
+                  </div>
+                  <button class="x" id="closeBtn" aria-label="Close">✕</button>
+                </header>
+
+                <main class="body" id="body">
+                  <div class="row">
+                    <div class="msg bot">Hello, hope you are doing good. I'm here to help with your questions. Before we begin, what's your name?</div>
+                    <div class="meta">—</div>
+                  </div>
+                </main>
+
+                <div class="quick-actions">
+                  <button data-q="Tell me about your experiences">💼 Experience</button>
+                  <button data-q="Tell me about your skills">🛠 Skills</button>
+                  <button data-q="List your projects">📂 Projects</button>
+                  <button data-q="Show your education">🎓 Education</button>
+                  <button data-q="Share your contact details">📞 Contact</button>
+                  <button data-q="Share your publications">👨‍💻 Publications</button>
+                </div>
+
+                <form class="input" id="form" autocomplete="off">
+                  <textarea id="inp" placeholder="Type a message… (Shift+Enter = new line)"></textarea>
+                  <button class="send" id="send" type="submit" title="Send (Enter)">➤</button>
+                </form>
+              </section>
+            </div>
+          `;
+
+          // ====== Script (scoped) ======
+          const API_URL = "https://Neeraj16-portfolio-chat-api.hf.space/api/chat";
+
+          const $ = (sel) => this.shadowRoot.querySelector(sel);
+          const wrap = $('#wrap');
+          const openBtn = $('#openBtn');
+          const closeBtn = $('#closeBtn');
+          const body = $('#body');
+          const form = $('#form');
+          const inp = $('#inp');
+          const qa = this.shadowRoot.querySelector('.quick-actions');
+
+          let username = null;
+
+          const timeNow = () => new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
+          const autosize = () => { inp.style.height='auto'; inp.style.height = Math.min(inp.scrollHeight, 140) + 'px'; };
+
+          const addMsg = (text, who='bot') => {
+            const row = document.createElement('div'); row.className='row';
+            const msg = document.createElement('div'); msg.className='msg ' + who;
+            if (who === 'bot') { msg.innerHTML = text; } else { msg.textContent = text; }
+            const meta = document.createElement('div'); meta.className='meta'; meta.textContent = timeNow();
+            row.appendChild(msg); row.appendChild(meta);
+            body.appendChild(row); body.scrollTop = body.scrollHeight;
+          };
+
+          const addTyping = () => {
+            const row = document.createElement('div'); row.className='row';
+            const msg = document.createElement('div'); msg.className='msg bot'; msg.textContent='…';
+            row.appendChild(msg); body.appendChild(row); body.scrollTop = body.scrollHeight; return row;
+          };
+
+          const escapeHTML = (s) => s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+
+          const linkify = (s) => {
+            s = s.replace(/([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/g,'<a href="mailto:$1" target="_blank" rel="noopener">$1</a>');
+            s = s.replace(/\b(https?:\/\/[^\s<)]+)\b/g,'<a href="$1" target="_blank" rel="noopener">$1</a>');
+            s = s.replace(/\b(www\.[^\s<)]+)\b/g,(m)=>`<a href="https://${m}" target="_blank" rel="noopener">${m}</a>`);
+            return s;
+          };
+
+          const renderMarkdownLite = (raw) => {
+            if(!raw) return "";
+            const parts = [];
+            const regex = /```([\s\S]*?)```/g;  // ✅ regex literal (single backslashes)
+            let last = 0, m;
+            while ((m = regex.exec(raw)) !== null) {
+              if (m.index > last) parts.push({type:'text', value: raw.slice(last, m.index)});
+              parts.push({type:'code', value: m[1]});
+              last = regex.lastIndex;
+            }
+            if (last < raw.length) parts.push({type:'text', value: raw.slice(last)});
+            const html = parts.map(p=>{
+              if (p.type === 'code') return `<pre><code>${escapeHTML(p.value)}</code></pre>`;
+              return linkify(escapeHTML(p.value));
+            }).join("");
+            return html;
+          };
+
+          const formatBotAnswer = (text) => {
+            if(!text) return "";
+            const sections = text.split("•").map(s => s.trim()).filter(Boolean);
+            const html = sections.map(sec=>{
+              const i = sec.indexOf(":");
+              if(i === -1){
+                const header = sec.replace(/^•\s*/,"");
+                return `<div class="blk"><div class="title">${renderMarkdownLite(header)}</div></div>`;
+              }
+              const header = sec.slice(0,i).trim().replace(/^•\s*/,"");
+              const rest = sec.slice(i+1);
+              const details = rest.split(/;|\n/).map(s=>s.replace(/\s+/g," ").trim()).filter(Boolean);
+              if(details.length===0){
+                return `<div class="blk"><div class="title">${renderMarkdownLite(header)}</div></div>`;
+              }
+              const bullets = details.map(d=>`<li>${renderMarkdownLite(d)}</li>`).join("");
+              return `<div class="blk"><div class="title">${renderMarkdownLite(header)}</div><ul class="list">${bullets}</ul></div>`;
+            }).join("");
+            return html || renderMarkdownLite(text);
+          };
+
+          const resetChat = () => {
+            username = null;
+            body.innerHTML = '';
+            addMsg("Hello, hope you are doing good. I'm here to help with your questions. Before we begin, what's your name?", 'bot');
+          };
+
+          // Open/Close
+          openBtn.addEventListener('click', ()=>{ wrap.style.display='block'; setTimeout(()=>inp.focus(),120); });
+          closeBtn.addEventListener('click', ()=>{ wrap.style.display='none'; resetChat(); });
+
+          // Enter to send
+          inp.addEventListener('keydown', (e)=>{
+            if(e.key==='Enter' && !e.shiftKey){ e.preventDefault(); form.requestSubmit(); }
+          });
+          inp.addEventListener('input', autosize);
+
+          // Quick actions
+          if (qa){
+            qa.querySelectorAll('button').forEach(btn=>{
+              btn.addEventListener('click', ()=> {
+                const q = btn.getAttribute('data-q') || btn.textContent.trim();
+                sendQuestion(q);
+              });
+            });
+          }
+
+          const sendQuestion = async (text) => {
+            if(!text) return;
+            addMsg(text, 'user');
+
+            if(!username){
+              username = text.replace(/[^a-zA-Z \-'.]/g,'').trim().split(/\s+/).slice(0,2).join(' ');
+              addMsg(`Welcome ${escapeHTML(username)}, how can I help you today?`, 'bot');
+              return;
+            }
+
+            const typing = addTyping();
+            try{
+              const resp = await fetch(API_URL, {
+                method:'POST',
+                headers:{'Content-Type':'application/json'},
+                body: JSON.stringify({ question: `${text} (User: ${username})` })
+              });
+              if(!resp.ok) throw new Error('HTTP '+resp.status);
+              const data = await resp.json();
+              typing.remove();
+              const formatted = formatBotAnswer((data.answer || '').trim());
+              addMsg(formatted || "(no answer)", 'bot');
+            }catch(err){
+              console.error(err);
+              typing.remove();
+              addMsg("Sorry, something went wrong. Please try again.", 'bot');
+            }
+          };
+
+          form.addEventListener('submit', (e)=>{
+            e.preventDefault();
+            const text = inp.value.trim();
+            if(!text) return;
+            inp.value=''; autosize();
+            sendQuestion(text);
+          });
+
+          autosize();
+        }
+      }
+
+      customElements.define('neeraj-chat-widget', NeerajChatWidget);
+    }
+  </script>
+
 </body>
-
-
-<!-- Mirrored from rainbowit.net/html/inbio/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 18 Feb 2022 14:24:04 GMT -->
 </html>
