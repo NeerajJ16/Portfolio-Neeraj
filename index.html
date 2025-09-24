@@ -33,6 +33,26 @@
     <link rel="stylesheet" href="css/plugins/feature.css">
     <!-- Style css -->
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Container holding the right-side buttons */
+.header-right .header-buttons {
+  display: flex;
+  gap: 1rem;            /* spacing between Blogs & Archives */
+  margin-left: 2rem;    /* spacing from navbar links */
+  align-items: center;  /* vertical alignment with navbar */
+}
+
+/* Button styling */
+.header-right .rn-btn {
+  padding: 0.55rem 1.2rem;
+  font-size: 0.9rem;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+    </style>
   <!-- JSON-LD Structured Data for Google -->
   <script type="application/ld+json">
   {
@@ -77,26 +97,35 @@
                             <li class="nav-item"><a class="nav-link smoth-animation active" href="#home">Home</a></li>
                             <li class="nav-item"><a class="nav-link smoth-animation" href="#features">Skills</a></li>
                             <li class="nav-item"><a class="nav-link smoth-animation" href="#resume">Resume</a></li>
-                            <li class="nav-item"><a class="nav-link smoth-animation" href="#testimonial">Projects</a></li>
                             <li class="nav-item"><a class="nav-link smoth-animation" href="#extrac">Extra Cirriculars</a></li>
                             <li class="nav-item"><a class="nav-link smoth-animation" href="#contacts">Contact</a></li>
                         </ul>
                         <!-- End Mainmanu Nav -->
                     </nav>
                     <div class="header-right">
-                        <ul class="primary-menu nav nav-pills">
-                       <!--<li class="nav-item"><a class="rn-btn" target="" href="resume/neeraj_jawahirani_resume.pdf"><span>Resume/CV</span></a></li>-->
-                        <li class="nav-item"><a class="rn-btn" target="_blank" href="https://neerajjawahirani.medium.com/"><span>Blogs</span></a></li>
-                        </ul>
-                        <div class="hamberger-menu d-block d-xl-none">
-                            <i id="menuBtn" class="feather-menu humberger-menu"></i>
-                        </div>
-                        <div class="close-menu d-block">
-                            <span class="closeTrigger">
-                            <i data-feather="x"></i>
-                        </span>
-                        </div>
-                    </div>
+    <ul class="primary-menu nav nav-pills header-buttons">
+                <li class="nav-item">
+            <a class="rn-btn" target="_blank" href="/archives.html">
+                <span>Project Archives</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="rn-btn" target="_blank" href="https://neerajjawahirani.medium.com/">
+                <span>Medium Blogs</span>
+            </a>
+        </li>
+    </ul>
+
+    <div class="hamberger-menu d-block d-xl-none">
+        <i id="menuBtn" class="feather-menu humberger-menu"></i>
+    </div>
+    <div class="close-menu d-block">
+        <span class="closeTrigger">
+            <i data-feather="x"></i>
+        </span>
+    </div>
+</div>
+
                     <!-- End Header Right  -->
 
                 </div>
@@ -123,7 +152,8 @@
                     <li class="nav-item"><a class="nav-link smoth-animation" href="#testimonial">Projects</a></li>
                     <li class="nav-item"><a class="nav-link smoth-animation" href="#extrac">Extra Cirriculars</a></li>
                     <li class="nav-item"><a class="nav-link smoth-animation" href="#contacts">Contact</a></li>
-                    <li class="nav-item"><a class="nav-link smoth-animation" href="https://neerajjawahirani.medium.com/" target="_blank" rel="noopener noreferrer" style="color: orangered;" onclick="window.open(this.href, '_blank'); return false;"> Blogs</a></li>
+                    <li class="nav-item"><a class="nav-link smoth-animation" href="/archives.html" target="_blank" rel="noopener noreferrer" style="color: orangered;" onclick="window.open(this.href, '_blank'); return false;">Project Archives</a></li>
+                    <li class="nav-item"><a class="nav-link smoth-animation" href="https://neerajjawahirani.medium.com/" target="_blank" rel="noopener noreferrer" style="color: orangered;" onclick="window.open(this.href, '_blank'); return false;">Medium Blogs</a></li>
 
                 </ul>
                 <!-- social sharea area -->
