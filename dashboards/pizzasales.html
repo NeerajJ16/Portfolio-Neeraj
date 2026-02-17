@@ -4,13 +4,18 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Pizza Sales Dashboard | Neeraj Jawahirani</title>
-    <meta name="description" content="Power BI Pizza Sales Dashboard by Neeraj Jawahirani">
+    <title>Sales Overview Dashboard | Neeraj Jawahirani</title>
+    <meta name="description" content="Power BI Sales Overview Dashboard by Neeraj Jawahirani">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="/css/vendor/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/vendor/aos.css">
-    <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="../css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/vendor/slick.css">
+    <link rel="stylesheet" href="../css/vendor/slick-theme.css">
+    <link rel="stylesheet" href="../css/vendor/aos.css">
+    <link rel="canonical" href="https://neerajj.netlify.app/archives/">
+    <link rel="stylesheet" href="../css/plugins/feature.css">
+    <!-- Style css -->
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body class="template-color-1">
@@ -20,20 +25,20 @@
     <div class="header-wrapper row align-items-center">
         <div class="col-lg-2 col-6">
             <div class="logo">
-                <a href="index.html">
+                <a href="../../index.html">
                     <img src="/images/NJ.png" alt="logo">
                 </a>
             </div>
         </div>
 
-
+        
                     <!-- Start Header Center -->
             <div class="col-lg-10 col-6">
                 <div class="header-center">
                     <nav id="sideNav" class="mainmenu-nav navbar-example2 d-none d-xl-block">
                         <!-- Start Mainmanu Nav -->
                         <ul class="primary-menu nav nav-pills">
-                            <li class="nav-item"><a target="" href="index.html">Home</a></li>
+                            <li class="nav-item"><a target="" href="../../index.html">Home</a></li>
                         <!-- End Mainmanu Nav -->
                     </nav>
                     <div class="header-right">
@@ -53,7 +58,56 @@
                 </div>
             </div>
             <!-- End Header Center -->
+    </div>
+
 </header>
+        <!-- Start Popup Mobile Menu  -->
+    <div class="popup-mobile-menu">
+        <div class="inner">
+            <div class="menu-top">
+                <div class="menu-header">
+                    <div class="close-button">
+                        <button class="close-menu-activation close"><i data-feather="x"></i></button>
+                    </div>
+                </div>
+                <p class="discription">Neeraj Jawahirani</p>
+            </div>
+            <div class="content">
+                <ul class="primary-menu nav nav-pills">
+                    <a target="" href="../../index.html">Home</a>
+                </ul>
+                <ul class="primary-menu nav nav-pills">
+                    <a target="" href="../archives.html">Back to Projects</a>
+                </ul>
+                <!-- social sharea area -->
+                <div class="social-share-style-1 mt--40">
+                    <span class="title">Find me on</span>
+                    <ul class="social-share d-flex liststyle">
+                        <li class="facebook"><a href="https://www.facebook.com/neeraj.jawahirani/"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-facebook">
+                                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                                </svg></a>
+                        </li>
+                        <li class="instagram"><a href="https://www.instagram.com/neeraj_jawahirani_/"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram">
+                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                                </svg></a>
+                        </li>
+                        <li class="linkedin"><a href="https://www.linkedin.com/in/neeraj-j-71841a12a/?_l=en_US"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-linkedin">
+                                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                                    <rect x="2" y="9" width="4" height="12"></rect>
+                                    <circle cx="4" cy="4" r="2"></circle>
+                                </svg></a>
+                        </li>
+                        <li class="mail"><a href="mailto:neerajjawahirani@gmail.com"><i data-feather="mail"></i></a>
+                        </li>
+                        
+                    </ul>
+                </div>
+                <!-- end -->
+            </div>
+        </div>
+    </div>
 
 <!-- ================= MAIN ================= -->
 <main class="main-page-wrapper">
@@ -229,8 +283,18 @@
     </div>
 </div>
 
-<script src="js/vendor/jquery.js"></script>
-<script src="js/vendor/bootstrap.js"></script>
+    <!-- JS ============================================ -->
+    <script src="../js/vendor/jquery.js"></script>
+    <script src="../js/vendor/modernizer.min.js"></script>
+    <script src="../js/vendor/feather.min.js"></script>
+    <script src="../js/vendor/slick.min.js"></script>
+    <script src="../js/vendor/bootstrap.js"></script>
+    <script src="../js/vendor/text-type.js"></script>
+    <script src="../js/vendor/wow.js"></script>
+    <script src="../js/vendor/aos.js"></script>
+    <script src="../js/vendor/particles.js"></script>
+    <!-- main JS -->
+    <script src="../js/main.js"></script>
 
 </body>
 </html>
