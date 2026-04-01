@@ -33,37 +33,274 @@
     <link rel="stylesheet" href="css/plugins/feature.css">
     <!-- Style css -->
     <link rel="stylesheet" href="css/style.css">
-    <style>
-        /* Container holding the right-side buttons */
-.header-right .header-buttons {
-  display: flex;
-  gap: 1rem;            /* spacing between Blogs & Archives */
-  margin-left: 2rem;    /* spacing from navbar links */
-  align-items: center;  /* vertical alignment with navbar */
-}
-        
+      <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* Button styling */
-.header-right .rn-btn {
-  padding: 0.55rem 1.2rem;
-  font-size: 1rem;
-  border-radius: 8px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-        #error-message, .error-message {
-  background-color: #f8f9fa;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 20px;
-  text-align: center;
-  color: #666;
-  font-style: italic;
-}
+    :root {
+      --bg: #0b0f19;
+      --surface: #131722;
+      --border: rgba(255,255,255,0.07);
+      --acc1: #f95230;
+      --acc2: #fb2c02;
+      --fg: #e7ecf2;
+      --muted: #9aa4b2;
+    }
 
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: 'DM Sans', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
 
-    </style>
+    /* ---- Animated background orbs ---- */
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(100px);
+      opacity: 0.18;
+      animation: drift 14s ease-in-out infinite alternate;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .orb1 { width: 520px; height: 520px; background: #fb2c02; top: -180px; left: -120px; animation-duration: 16s; }
+    .orb2 { width: 400px; height: 400px; background: #f95230; bottom: -150px; right: -100px; animation-duration: 20s; animation-delay: -5s; }
+    .orb3 { width: 260px; height: 260px; background: #ff8060; top: 50%; left: 50%; transform: translate(-50%,-50%); animation-duration: 12s; animation-delay: -3s; opacity: 0.07; }
+
+    @keyframes drift {
+      from { transform: translate(0, 0) scale(1); }
+      to   { transform: translate(40px, 30px) scale(1.08); }
+    }
+    .orb3 { animation-name: drift3; }
+    @keyframes drift3 {
+      from { transform: translate(-50%,-50%) scale(1); }
+      to   { transform: translate(calc(-50% + 20px), calc(-50% + 15px)) scale(1.12); }
+    }
+
+    /* ---- Grid pattern overlay ---- */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 64px 64px;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* ---- Main card ---- */
+    .card {
+      position: relative; z-index: 1;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 56px 52px 48px;
+      max-width: 600px;
+      width: calc(100% - 32px);
+      text-align: center;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04);
+      animation: slideUp 0.9s cubic-bezier(0.22,1,0.36,1) both;
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(40px) scale(0.97); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* ---- Logo ---- */
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 36px;
+    }
+    .logo-wrap img {
+      height: 44px;
+      width: auto;
+    }
+
+    /* ---- Gear icon animation ---- */
+    .icon-wrap {
+      width: 80px; height: 80px;
+      margin: 0 auto 28px;
+      position: relative;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .gear-ring {
+      position: absolute;
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      border-top-color: var(--acc1);
+      border-right-color: var(--acc1);
+      animation: spin 2.4s linear infinite;
+    }
+    .gear-ring-inner {
+      position: absolute;
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      border-bottom-color: rgba(249,82,48,0.4);
+      border-left-color: rgba(249,82,48,0.4);
+      animation: spin 1.6s linear infinite reverse;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .gear-icon {
+      font-size: 24px;
+      animation: spin 6s linear infinite;
+      display: inline-block;
+    }
+
+    /* ---- Text ---- */
+    .badge {
+      display: inline-block;
+      background: linear-gradient(135deg, rgba(251,44,2,0.18), rgba(249,82,48,0.12));
+      color: var(--acc1);
+      border: 1px solid rgba(249,82,48,0.3);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 99px;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(30px, 6vw, 42px);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #e7ecf2 0%, #9aa4b2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    h1 span {
+      background: linear-gradient(135deg, var(--acc2), var(--acc1));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .description {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 36px;
+      max-width: 440px;
+      margin-left: auto; margin-right: auto;
+    }
+
+    /* ---- Divider ---- */
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin-bottom: 32px;
+    }
+
+    /* ---- Contact row ---- */
+    .contact-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+    .contact-row a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 400;
+      transition: color 0.2s;
+    }
+    .contact-row a:hover { color: var(--acc1); }
+    .contact-row a svg { width: 15px; height: 15px; flex-shrink: 0; }
+
+    /* ---- Social row ---- */
+    .social-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+    .social-row a {
+      display: grid;
+      place-items: center;
+      width: 40px; height: 40px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+    .social-row a:hover {
+      border-color: rgba(249,82,48,0.5);
+      background: rgba(249,82,48,0.08);
+      color: var(--acc1);
+    }
+    .social-row a svg { width: 17px; height: 17px; }
+
+    /* ---- Footer note ---- */
+    .footer-note {
+      position: fixed;
+      bottom: 22px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 12px;
+      color: rgba(154,164,178,0.5);
+      white-space: nowrap;
+      z-index: 1;
+    }
+
+    /* ---- Progress bar (decorative) ---- */
+    .progress-wrap {
+      margin-bottom: 32px;
+    }
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: rgba(154,164,178,0.6);
+      margin-bottom: 8px;
+    }
+    .progress-track {
+      height: 4px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 99px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--acc2), var(--acc1));
+      border-radius: 99px;
+      animation: fillBar 2.4s cubic-bezier(0.34,1.56,0.64,1) 0.6s forwards;
+    }
+    @keyframes fillBar {
+      to { width: 72%; }
+    }
+
+    @media (max-width: 480px) {
+      .card { padding: 40px 24px 36px; }
+    }
+  </style>
   <!-- JSON-LD Structured Data for Google -->
   <script type="application/ld+json">
   {
@@ -121,1250 +358,96 @@
     <div class="elfsight-app-ee631b79-b8df-4114-ac31-9391198abd1a" data-elfsight-app-lazy></div>
 </head>
 
-<body class="template-color-1 spybody" data-spy="scroll" data-target=".navbar-example2" data-offset="70">
+<body>
 
-    <!-- Start Header -->
-    <header class="rn-header haeder-default black-logo-version header--fixed header--sticky">
-        <div class="header-wrapper rn-popup-mobile-menu m--0 row align-items-center">
-            <!-- Start Header Left -->
-            <div class="col-lg-2 col-6">
-                <div class="header-left">
-                    <div class="logo">
-                        <a href="index.html">
-                            <img src="images/NJ.png" alt="logo">
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <!-- End Header Left -->
-            <!-- Start Header Center -->
-            <div class="col-lg-10 col-6">
-                <div class="header-center">
-                    <nav id="sideNav" class="mainmenu-nav navbar-example2 d-none d-xl-block">
-                        <!-- Start Mainmanu Nav -->
-                        <ul class="primary-menu nav nav-pills">
-                            <li class="nav-item"><a class="nav-link smoth-animation active" href="#home">Home</a></li>
-                            <li class="nav-item"><a class="nav-link smoth-animation" href="#features">Skills</a></li>
-                            <li class="nav-item"><a class="nav-link smoth-animation" href="#resume">Resume</a></li>
-                            <li class="nav-item"><a class="nav-link smoth-animation" href="#researches">Researches</a></li>
-                            <li class="nav-item"><a class="nav-link smoth-animation" href="#extrac">Extra Cirriculars</a></li>
-                            <li class="nav-item"><a class="nav-link smoth-animation" href="#contacts">Contact</a></li>
-                        </ul>
-                        <!-- End Mainmanu Nav -->
-                    </nav>
-                    <div class="header-right">
-    <ul class="primary-menu nav nav-pills header-buttons">
-                <li class="nav-item">
-            <a class="rn-btn" target="_blank" href="/archives/index.html">
-                <span>Project Archives</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="rn-btn" target="_blank" href="https://neerajjawahirani.medium.com/">
-                <span>Medium Blogs</span>
-            </a>
-        </li>
-    </ul>
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
 
-    <div class="hamberger-menu d-block d-xl-none">
-        <i id="menuBtn" class="feather-menu humberger-menu"></i>
+  <div class="card">
+
+    <!-- Logo -->
+    <div class="logo-wrap">
+      <img src="images/NJ.png" alt="NJ Logo" onerror="this.style.display='none'">
     </div>
-    <div class="close-menu d-block">
-        <span class="closeTrigger">
-            <i data-feather="x"></i>
-        </span>
+
+    <!-- Animated gear -->
+    <div class="icon-wrap">
+      <div class="gear-ring"></div>
+      <div class="gear-ring-inner"></div>
+      <span class="gear-icon">⚙️</span>
     </div>
-</div>
 
-                    <!-- End Header Right  -->
+    <div class="badge">Scheduled Maintenance</div>
 
-                </div>
-            </div>
-            <!-- End Header Center -->
-        </div>
-    </header>
-    <!-- Start Popup Mobile Menu  -->
-    <div class="popup-mobile-menu">
-        <div class="inner">
-            <div class="menu-top">
-                <div class="menu-header">
-                    <div class="close-button">
-                        <button class="close-menu-activation close"><i data-feather="x"></i></button>
-                    </div>
-                </div>
-                <p class="discription">Neeraj Jawahirani</p>
-            </div>
-            <div class="content">
-                <ul class="primary-menu nav nav-pills">
-                    <li class="nav-item"><a class="nav-link smoth-animation active" href="#home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link smoth-animation" href="#features">Skills</a></li>
-                    <li class="nav-item"><a class="nav-link smoth-animation" href="#resume">Resume</a></li>
-                    <li class="nav-item"><a class="nav-link smoth-animation" href="#researches">Researches</a></li>
-                    <li class="nav-item"><a class="nav-link smoth-animation" href="#testimonial">Projects</a></li>
-                    <li class="nav-item"><a class="nav-link smoth-animation" href="#extrac">Extra Cirriculars</a></li>
-                    <li class="nav-item"><a class="nav-link smoth-animation" href="#contacts">Contact</a></li>
-                    <li class="nav-item">
-  <a class="nav-link smoth-animation" 
-     href="https://neerajj.netlify.app/archives/" 
-     target="_blank" 
-     rel="noopener noreferrer" 
-     style="color: orangered;" 
-     onclick="window.open(this.href, '_blank'); return false;">
-     Project Archives
-  </a>
-                    <li class="nav-item"><a class="nav-link smoth-animation" href="https://neerajjawahirani.medium.com/" target="_blank" rel="noopener noreferrer" style="color: orangered;" onclick="window.open(this.href, '_blank'); return false;">Medium Blogs</a></li>
+    <h1>Back <span>very soon.</span></h1>
 
-                </ul>
-                <!-- social sharea area -->
-                <div class="social-share-style-1 mt--40">
-                    <span class="title">Find me on</span>
-                    <ul class="social-share d-flex liststyle">
-                        <li class="facebook"><a href="https://www.facebook.com/neeraj.jawahirani/"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-facebook">
-                                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                                </svg></a>
-                        </li>
-                        <li class="instagram"><a href="https://www.instagram.com/neeraj_jawahirani_/"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram">
-                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                                </svg></a>
-                        </li>
-                    <li class="linkedin"><a href="https://www.linkedin.com/in/neeraj-jawahirani-71841a12a/"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-linkedin">
-                                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                                    <rect x="2" y="9" width="4" height="12"></rect>
-                                    <circle cx="4" cy="4" r="2"></circle>
-                                </svg></a>
-                        </li>
-                        <li class="mail"><a href="mailto:neerajjawahirani@gmail.com"><i data-feather="mail"></i></a>
-                        </li>
-                        
-                    </ul>
-                </div>
-                <!-- end -->
-            </div>
-        </div>
+    <p class="description">
+      I'm upgrading things behind the scenes to bring you an even better experience.
+      Hang tight — the portfolio will be back online shortly.
+    </p>
+
+    <!-- Progress -->
+    <div class="progress-wrap">
+      <div class="progress-label">
+        <span>Progress</span>
+        <span id="pct">72%</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill"></div>
+      </div>
     </div>
-    <main class="main-page-wrapper">
 
-        <!-- Start Slider Area -->
-        <div id="home" class="rn-slider-area">
-            <div class="slide slider-style-1">
-                <div class="container">
-                    <div class="row row--30 align-items-center">
-                        <div class="order-2 order-lg-1 col-lg-7 mt_md--50 mt_sm--50 mt_lg--30">
-                            <div class="content">
-                                <div class="inner">
-                                    <h1 class="title">Hi👋, I’m <span>Neeraj J</span><br>
-                                        <span class="header-caption" id="page-top">
-                                            <!-- type headline start-->
-                                            <span class="cd-headline clip is-full-width">
-                                                <span>a </span>
-                                        <!-- ROTATING TEXT -->
-                                          <span class="cd-words-wrapper">
-                                            <b class="is-visible">Data Engineer</b>
-                                            <b class="is-hidden">AI Enthusiast</b>
-                                            <b class="is-hidden">Tech Explorer</b>
-                                            <b class="is-hidden">Storyteller</b>
-                                            <b class="is-hidden">Personality Developer</b>
-                                          </span>
-                                        </span>
-                                        <!-- type headline end -->
-                                        </span>
-                                    </h1>
-
-                                    <div>
-                                        <p class="description">I'm a data engineer, software developer, and tech enthusiast with a Master’s in Data Science from Florida State University, passionate about bridging the gap between raw data and actionable insights. With expertise in machine learning, web development, data analytics, Python, SQL, AWS, and AI-powered solutions, I thrive on solving complex problems and building scalable, impactful applications. Beyond tech, I express creativity through cooking, dance, poetry, and shayaris, believing that the best innovations come from blending analytical thinking with artistic intuition. I enjoy working on big data processing, cloud computing, and predictive modeling to drive intelligent decision-making. Let’s connect and create something extraordinary! 🚀</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-7 col-xl-7 col-md-7 col-sm-7 col-12">
-                                        <div class="social-share-inner-left">
-                                            <span class="title">find me on</span>
-                                            <ul class="social-share d-flex liststyle">
-                                                <li class="mail"><a href="mailto:neerajjawahirani@gmail.com"><i data-feather="mail"></i></a>
-                                                </li>
-                                              <li class="linkedin"><a href="https://www.linkedin.com/in/neeraj-jawahirani-71841a12a/"><i data-feather="linkedin"></i></a></li>
-                                                <li class="linkedin"><a href="https://github.com/NeerajJ16/"><i data-feather="github"></i></a></li>
-                                                <li class="facebook"><a href="https://www.facebook.com/neeraj.jawahirani/"><i data-feather="facebook"></i></a>
-                                                </li>
-                                                <li class="instagram"><a href="https://www.instagram.com/neeraj_jawahirani_/"><i data-feather="instagram"></i></a>
-                                                </li>
-                                                
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="order-1 order-lg-2 col-lg-5">
-                            <div class="thumbnail">
-                                <div class="inner">
-                                    <img src="images/3d/Saly-13.png" alt="Personal Portfolio Images">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!--Skills-->
-        <div class="rn-service-area rn-section-gap section-separator" id="features">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="section-title text-left" data-aos="fade-up" data-aos-duration="500" data-aos-delay="100" data-aos-once="true">
-                            <span class="subtitle">Skills</span>
-                            <h2 class="title">What I Do</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="row row--25 mt_md--10 mt_sm--10">
-
-                    <!-- Start Single Service -->
-                    <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="100" data-aos-once="true" class="col-lg-6 col-xl-6 col-md-6 col-sm-12 col-12 mt--50 mt_md--30 mt_sm--30">
-                        <div class="rn-service">
-                            <div class="inner">
-                                <div class="icon">
-                                    <i data-feather="code"></i>
-                                </div>
-                                <div class="content">
-                                    <h4 class="title"><a href="#features">Languages</a></h4>
-                                    <p class="description">C, C++, Java, Advanced Java, Python (NumPy, Pandas, Matplotlib, Plotly, Seaborn), R, PHP</p>
-                                </div>
-                            </div>
-                            <a class="over-link" href="#features"></a>
-                        </div>
-                    </div>
-                    <!-- End SIngle Service -->
-                                           <!-- Start Single Service -->
-                    <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="100" data-aos-once="true" class="col-lg-6 col-xl-6 col-md-6 col-sm-12 col-12 mt--50 mt_md--30 mt_sm--30">
-                        <div class="rn-service">
-                            <div class="inner">
-                                <div class="icon">
-                                    <i data-feather="database"></i>
-                                </div>
-                                <div class="content">
-                                    <h4 class="title"><a href="#features">Databases </a></h4>
-                                    <p class="description"> SQL, PostgreSQL, SQLite, MongoDB, NoSQL, Amazon RDS, Hadoop, Snowflake</p>
-                                </div>
-                            </div>
-                            <a class="over-link" href="#features"></a>
-                        </div>
-                    </div>
-                    <!-- End SIngle Service -->
-                     <!-- Start Single Service -->
-                    <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="100" data-aos-once="true" class="col-lg-6 col-xl-6 col-md-6 col-sm-12 col-12 mt--50 mt_md--30 mt_sm--30">
-                        <div class="rn-service">
-                            <div class="inner">
-                                <div class="icon">
-                                    <i data-feather="tv"></i>
-                                </div>
-                                <div class="content">
-                                    <h4 class="title"><a href="#features"> Data Engineering & Pipelines</a></h4>
-                                    <p class="description">Airflow, Spark, DBT, REST APIs, Docker, Data Validation, CI/CD, A/B Testing</p>
-                                </div>
-                            </div>
-                            <a class="over-link" href="#features"></a>
-                        </div>
-                    </div>
-                    <!-- End SIngle Service -->
-                    <!-- Start Single Service -->
-                    <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="100" data-aos-once="true" class="col-lg-6 col-xl-6 col-md-6 col-sm-12 col-12 mt--50 mt_md--30 mt_sm--30">
-                        <div class="rn-service">
-                            <div class="inner">
-                                <div class="icon">
-                                    <i data-feather="user"></i>
-                                </div>
-                                <div class="content">
-                                    <h4 class="title"><a href="#features">Data Visualization and BI:</a></h4>
-                                    <p class="description">Power BI, Tableau, Looker Studio, Matplotlib, Seaborn, Plotly</p>
-                                </div>
-                            </div>
-                            <a class="over-link" href="#features"></a>
-                        </div>
-                    </div>
-                    <!-- End SIngle Service -->
-                     <!-- Start Single Service -->
-                    <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="100" data-aos-once="true" class="col-lg-6 col-xl-6 col-md-6 col-sm-12 col-12 mt--50 mt_md--30 mt_sm--30">
-                        <div class="rn-service">
-                            <div class="inner">
-                                <div class="icon">
-                                    <i data-feather="codesandbox"></i>
-                                </div>
-                                <div class="content">
-                                    <h4 class="title"><a href="#features">Machine Learning & AI</a></h4>
-                                    <p class="description">Scikit-learn, XGBoost, TensorFlow, PyTorch, NLTK, OpenCV, LangChain, Natural Language Processing (NLP),Generative AI, Large Language Models (LLMs)</p>
-                                 </div>
-                            </div>
-                            <a class="over-link" href="#features"></a>
-                        </div>
-                    </div>
-                    <!-- End SIngle Service -->
-                     <!-- Start Single Service -->
-                    <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="100" data-aos-once="true" class="col-lg-6 col-xl-6 col-md-6 col-sm-12 col-12 mt--50 mt_md--30 mt_sm--30">
-                        <div class="rn-service">
-                            <div class="inner">
-                                <div class="icon">
-                                    <i data-feather="cloud"></i>
-                                </div>
-                                <div class="content">
-                                    <h4 class="title"><a href="#features">Tools & Cloud</a></h4>
-                                    <p class="description">AWS (S3, Redshift, RDS), Microsoft Azure, Docker, GitHub, Bitbucket, Microsoft Excel</p>
-                                </div>
-                            </div>
-                            <a class="over-link" href="#features"></a>
-                        </div>
-                    </div>
-                    <!-- End SIngle Service -->                               
-                </div>
-            </div>
-        </div>
-
-        <div class="rn-resume-area rn-section-gap section-separator" id="resume">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="section-title text-center">
-                            <span class="subtitle"></span>
-                            <h2 class="title">My Resume</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="row mt--45">
-                    <div class="col-lg-12">
-                        <ul class="rn-nav-list nav nav-tabs" id="myTabs" role="tablist">
-            
-                            <li class="nav-item">
-                                <a class="nav-link active" id="experience-tab" data-toggle="tab" href="#experience" role="tab" aria-controls="experience" aria-selected="true">Experiences</a>
-                            </li>
-                             <li class="nav-item">
-                                <a class="nav-link" id="education-tab" data-toggle="tab" href="#education" role="tab" aria-controls="education" aria-selected="false">education</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="professional-tab" data-toggle="tab" href="#professional" role="tab" aria-controls="professional" aria-selected="false">Certifications</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="interview-tab" data-toggle="tab" href="#interview" role="tab" aria-controls="interview" aria-selected="false">Leadership Activties</a>
-                            </li>
-                        </ul>
-                        <!-- Start Tab Content Wrapper  -->
-
-
-                        <!--Education-->
-                        <div class="rn-nav-content tab-content" id="myTabContents">
-                            <!-- Start Single Tab Education  -->
-                            <div class="tab-pane fade" id="education" role="tabpanel" aria-labelledby="education-tab">
-                                <div class="personal-experience-inner mt--40">
-                                    <div class="row">
-                                        <!-- Start Skill List Area  -->
-                                        <div class="col-lg-12 col-md-12 col-12">
-                                            <div class="content">
-                                             
-                                                <div class="experience-list">
-
-                                                    <!-- Start Single List  -->
-                                                    <div class="resume-single-list">
-                                                        <div class="inner">
-                                                            <div class="heading">
-                                                                <div class="title">
-                                                                    <h4>Masters of Science in Data Science-Computer Science</h4>
-                                                                    <span>August 2023 - May 2025</span>
-                                                                    <span><b>Relevant Coursework</b>:<i>Data Mining, Machine Learning, Advance Data Science, Data Ethics, Cybersecurity in Data Science</i></span>
-                                                                </div>
-                                                                <div class="date-of-time">
-                                                                    <span>3.9 CGPA</span>
-                                                                </div>
-                                                            </div>
-                                                            <p class="description">Florida State University<br>Tallahassee, FL, United States</p>
-                                                        </div>
-                                                    </div>
-                                                    <!-- End Single List  -->
-
-                                                     <!-- Start Single List  -->
-                                                     <div class="resume-single-list">
-                                                        <div class="inner">
-                                                            <div class="heading">
-                                                                <div class="title">
-                                                                    <h4>Bachelors of Engineering in Information Technology</h4>
-                                                                    <span>June 2018 - May 2022</span>
-                                                                    <span><b>Relevant Coursework</b>:<i>Artifical Intelligence, Data Structures and Algorithims, Cloud Computing, Database Management System</i></span>
-                                                                </div>
-                                                                <div class="date-of-time">
-                                                                    <span>9.1 CGPA</span>
-                                                                </div>
-                                                            </div>
-                                                            <p class="description">Savitribai Phule Pune University.<br>
-                                                                Pune, MH, India</p>
-                                                        </div>
-                                                    </div>
-                                                    <!-- End Single List  -->
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- End Skill List Area  -->
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Tab  -->
-
-
-                            <!--Projects-->
-                            <!-- Start Single Tab Certifications  -->
-                            <!-- Start Single Tab  -->
-                            <div class="tab-pane fade" id="professional" role="tabpanel" aria-labelledby="interview-tab">
-                                <div class="personal-experience-inner mt--40">
-                                    <div class="row">
-                                        <!-- Start Skill List Area  -->
-                                        <div class="col-lg-12 col-md-12 col-12">
-                                            <div class="content">
-                                                <span class="subtitle"></span>
-                                                <h4 class="maintitle"></h4>
-                                                <div class="experience-list">
-
-                                                    <!-- Start Single List  -->
-                                                    <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="300" data-aos-once="true" class="resume-single-list">
-                                                            <div class="heading">
-                                                                <div class="title">
-                                                                    <ul style="list-style-type:disc;">
-                                                                        <li class="description">Data Engineer - Data Integration by IBM-Techademy</li>
-                                                                        <li class="description">Software Development and Life Cycle by IBM-Techademy</li>
-                                                                        <li class="description">Cloud Computing with AWS</li>
-                                                                        <li class="description">Data Science : R Programming Complete Diploma 2023</li>
-                                                                        <li class="description">Web Penetration Testing</li>
-                                                                        <li class="description">Database Management with SQL</li>
-                                                                    </ul>
-                                                                </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- End Single List  -->
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- End Skill List Area  -->
-
-                                        <!-- Start Skill List Area 2nd  -->
-
-                                        <!-- End Skill List Area  -->
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Tab  -->
-                            <!-- End Single Tab  -->
-
-
-                            <!--Experince Jobs-->
-                            <!-- Start Single Tab Experiences  -->
-                            <div class="tab-pane show active fade single-tab-area" id="experience" role="tabpanel" aria-labelledby="experience-tab">
-            
-                                <div class="personal-experience-inner mt--40">
-                                    <div class="row">
-                                        <!-- Start Skill List Area  -->
-                                        <div class="col-lg-12 col-md-12 col-12">
-                                            <div class="content">
-                                                <div class="experience-list">                                                    
-
-                                                    <div class="resume-single-list">
-                                                        <div class="inner">
-                                                            <div class="heading">
-                                                                <div class="title">
-                                                                    <h4>Humana Inc</h4>
-                                                                    <h7>Data Engineer - Florida, USA </h7><br>
-                                                                    <h7>January 2025 - Present </h7>
-                                                                </div>
-                                                            </div>
-                                                     <!--       <p class="description">-->
-                                                                <!--<ul style="list-style-type:disc;">-->
-                                                             <!--       <p class="description"> Designed and maintained ETL pipelines in Python and SQL processing over 50,000 daily records to deliver clean, reliable data for real-time oceanographic visualizations. Refactored legacy PHP code by modularizing backend logic and optimizing SQL queries, improving data retrieval speeds by 27%. Implemented a Python-based data validation layer to verify data types, ranges, and completeness, reducing deployment errors by 30%. Containerized workflows with Docker, transforming raw vessel data into structured PostgreSQL outputs for efficient, scalable marine data visualizations.</p> -->
-                                                         <!--       </p>-->
-                                                        </div>
-                                                    </div>
-
-
-                                                    <div class="resume-single-list">
-                                                        <div class="inner">
-                                                            <div class="heading">
-                                                                <div class="title">
-                                                                    <h4>CitiusTech -  India</h4>
-                                                                    <h7>Data Engineer</h7><br>
-                                                                    <h7>September 2020 - August 2023 </h7>
-                                                                </div>
-                                                            </div>
-                                                            <!--
-                                                            <p class="description">
-                                                                    <p class="description">Built end-to-end data pipelines transferring over 500K records from diverse file formats into AWS S3 using Python, SQL, and Spark, enabling scalable analytics. Developed PySpark workflows with integrated validation checks to ensure schema consistency and maintain data quality. Modeled and transformed 10+ raw datasets into Snowflake with dbt, incorporating schema and null checks for accurate dashboards and optimized downstream queries. Designed a custom data extraction layer and interactive Power BI dashboards, refined through A/B testing to highlight key insights with clarity and precision.</p>
-                                                                </p> -->
-                                                        </div>
-                                                    </div>
-                                                    <!--
-
-                                                    <div class="resume-single-list">
-                                                        <div class="inner">
-                                                            <div class="heading">
-                                                                <div class="title">
-                                                                    <h4>Geniobits Private LTD - Pune, India</h4>
-                                                                    <h7>Web Data Analyst & Team Lead Intern </h7><br>
-                                                                    <h7>May 2021 - December 2021 </h7>
-                                                                </div>
-                                                            </div>
-                                                            <p class="description">
-                                                
-                                                                    <p class="description">Processed over 200K records with PySpark, collaborating with engineering interns to enhance data accuracy and pipeline reliability. Designed five analytical dashboards in Power BI and Python, integrating data from Azure Blob Storage to deliver actionable insights. Trained PyTorch models on 10K+ student records, achieving an F1 score of 82% for academic outcome prediction, and deployed them via REST APIs in a demo application. Established CI/CD pipelines with Git and Docker, automating testing and accelerating staging deployments, significantly reducing deployment time.</p>
-                                                              
-                                                                </p>
-                                                        </div>
-                                                    </div>
-                                                   -->
-
-                                                   
-
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- End Skill List Area  -->
-                                    </div>
-                                </div>
-                                        <!-- Start Skill List Area 2nd  -->
-                            <!-- End Single Tab  -->
-                            </div>
-                            
-
-                            <!--Extra Cricular Jobs-->
-                            <!-- Start Single Tab  -->
-                            <div class="tab-pane fade" id="interview" role="tabpanel" aria-labelledby="interview-tab">
-                                <div class="personal-experience-inner mt--40">
-                                    <div class="row">
-                                        <!-- Start Skill List Area  -->
-                                        <div class="col-lg-12 col-md-12 col-12">
-                                            <div class="content">
-                                                <span class="subtitle"></span>
-                                                <h4 class="maintitle"></h4>
-                                                <div class="experience-list">
-
-                                                    <!-- Start Single List  -->
-                                                    <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="300" data-aos-once="true" class="resume-single-list">
-                                                            <div class="heading">
-                                                                <div class="title">
-                                                                    <h4>Soft Skills Club Head</h4>
-                                                                    <span>Information Technology Student Association (2019-2020)</span>
-                                                                </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- End Single List  -->
-
-                                                    <!-- Start Single List  -->
-                                                    <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="700" data-aos-once="true" class="resume-single-list">
-                                                            <div class="heading">
-                                                                <div class="title">
-                                                                    <h4>President and Founder</h4>
-                                                                    <span>Toastmaster DYPCOE (2019-2021)</span>
-                                                                </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- End Single List  -->
-
-                                                    <!-- Start Single List  -->
-                                                    <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="500" data-aos-once="true" class="resume-single-list">
-                                                            <div class="heading">
-                                                                <div class="title">
-                                                                    <h4>Management Head</h4>
-                                                                    <span>Information Technology Student Association (2021-2022)</span>
-                                                                </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- End Single List  -->
-
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- End Skill List Area  -->
-
-                                        <!-- Start Skill List Area 2nd  -->
-
-                                        <!-- End Skill List Area  -->
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Tab  -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-
-        <!--Researches-->
-
-                <!--Skills-->
-        <div class="rn-service-area rn-section-gap section-separator" id="researches">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="section-title text-left" data-aos="fade-up" data-aos-duration="500" data-aos-delay="100" data-aos-once="true">
-                            <span class="subtitle">Explore</span>
-                            <h2 class="title">Researches and Initiatives</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="row row--25 mt_md--10 mt_sm--10">
-
-                    <!-- Start Single Service -->
-                    <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="100" data-aos-once="true" class="col-lg-12 col-xl-12 col-md-12 col-sm-12 col-12 mt--50 mt_md--30 mt_sm--30">
-                        <div class="rn-service">
-                            <div class="inner">
-                                <div class="content">
-                                    <h4 class="title"><a href="#researches">Florida State University -- AI Researcher</a></h4>
-                                    <p class="description">Worked extensively with large language models, fine-tuned on datasets exceeding 50,000 examples using LoRA and PEFT, achieving 10–15% gains in task accuracy on models like DistilGPT2. Engineered scalable NLP pipelines with Hugging Face and PyTorch, incorporating optimizations such as mixed-precision training and batch tuning to reduce training time by 35%. Contributed to ParticleViz, an open-source tool that visualizes Lagrangian particle simulations through interactive web maps, enabling Earth Science researchers to explore complex spatial and temporal patterns.</p>
-                                    <h6><a href="https://olmozavala.github.io/particleviz/" style="color: tomato;">Link</a></h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End SIngle Service -->
-                                         <!-- Start Single Service -->
-                    <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="100" data-aos-once="true" class="col-lg-12 col-xl-12 col-md-12 col-sm-12 col-12 mt--50 mt_md--30 mt_sm--30">
-                        <div class="rn-service">
-                            <div class="inner">
-                                <div class="content">
-                                    <h4 class="title"><a href="#researches">Learnscape AI -- Founder and Developer</a></h4>
-                                    <p class="description">Developed LearnScape AI, an intelligent learning platform that generates personalized study roadmaps, quizzes, and flashcards using Retrieval-Augmented Generation (RAG) and LLM-based evaluation pipelines. Integrated FastAPI, dbt, and PostgreSQL to create a modular backend architecture for scalable knowledge retrieval and progress tracking. Experimented with knowledge evaluation, content generation, and user engagement optimization, applying fine-tuned LLMs and semantic search techniques to enhance learning adaptability and user experience.</p>
-                                     <h6><a href="https://learnscapeai.com/" style="color: tomato;">Link</a></h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End SIngle Service -->   
-                                               
-                </div>
-            </div>
-        </div>
-
-
-
-        <!--Projects-->
-        <div class="rn-testimonial-area rn-section-gap section-separator" id="testimonial">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="section-title text-center">
-                            <span class="subtitle">My</span>
-                            <h2 class="title">Projects</h2><br><br>
-                             <h5 class="title">Learn more about my projects <a href="https://neerajj.netlify.app/archives" target ="_blank" style="text-decoration:underline; color: tomato;">@ Archives</a></h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <!--Images Extra-->
-        <div class="rn-testimonial-area rn-section-gap section-separator" id="extrac">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="section-title text-center">
-                            <span class="subtitle">My</span>
-                            <h2 class="title">Extra Cirriculars</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="testimonial-activation testimonial-pb mb--30">
-                            <!-- Start Single testiminail -->
-                            <div class="testimonial mt--50 mt_md--40 mt_sm--40">
-                                <div class="inner">
-                                    
-                                    <div class="card-description">
-                                        <div class="title-area">
-                                            <div class="title-info">
-                                                <h3 class="title">Host and Organizer at Gadget Gyaan</h3>
-                                            </div>
-                                        </div>
-                                        <div class="seperator"></div>
-                                       
-                                        <img src="images/image1.jpg" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                            <!--End Single testiminail -->
-                            <!-- Start Single testiminail -->
-                            <div class="testimonial mt--50 mt_md--40 mt_sm--40">
-                                <div class="inner">
-                                    
-                                    <div class="card-description">
-                                        <div class="title-area">
-                                            <div class="title-info">
-                                                <h3 class="title">A speech for Personality Development</h3>
-                                            </div>
-                                        </div>
-                                        <div class="seperator"></div>
-                                        
-                                        <img src="images/image3.jpg" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                            <!--End Single testiminail -->
-                            <!-- Start Single testiminail -->
-                            <div class="testimonial mt--50 mt_md--40 mt_sm--40">
-                                <div class="inner">
-                                    
-                                    <div class="card-description">
-                                        <div class="title-area">
-                                            <div class="title-info">
-                                                <h3 class="title">Teaching Assistant at Government School</h3>
-                                            </div>
-                                        </div>
-                                        <div class="seperator"></div>
-                                        
-                                        <img src="images/image2.jpg" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                            <!--End Single testiminail -->
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <!--Contact Session-->
-        <div class="rn-contact-area rn-section-gap section-separator" id="contacts">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="section-title text-center">
-                            <span class="subtitle">Contact</span>
-                            <h2 class="title">Contact With Me</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="row mt--50 mt_md--40 mt_sm--40 mt-contact-sm">
-                    <!-- Contact Info Section -->
-                    <div class="col-lg-5">
-                        <div class="contact-about-area">
-                            <div class="thumbnail">
-                                <img src="images/3d/Saly-31.png" height="5px" width="5px" alt="contact-img">
-                            </div>
-                            <div class="title-area">
-                                <h4 class="title">Neeraj Jawahirani</h4>
-                                <span>AI and Data Engineer | Analyst</span>
-                            </div>
-                            <div class="description">
-                                <p>Connect with me via mail or phone</p>
-                                <span class="phone">Phone: <a href="tel:+18503003851">+1 (850) 300-3851</a></span><br>
-                                <span class="mail">Email: <a href="mailto:neerajjawahirani@gmail.com">neerajjawahirani@gmail.com</a></span>
-                                <span class="mail">Secondary Email: <a href="mailto:neerajjawahirani22@gmail.com">neerajjawahirani22@gmail.com</a></span>
-                            </div>
-                        </div>
-                    </div>
-        
-                    <!-- Contact Form Section -->
-                    <div class="col-lg-7">
-                        <div class="contact-form">
-                            <form id="contact-form" name="contact" method="POST" data-netlify="true">
-                                <div class="form-group">
-    
-                                    <input type="text" id="name" name="name" placeholder="Enter your name" required style="background-color: #1c1e22; color: #ffffff; border: 1px solid #ccc; padding: 10px; border-radius: 4px; width: 100%; box-sizing: border-box;font-size: 14px;">
-                                </div>
-                                <div class="form-group">
-                                    <input type="email" id="email" name="email" placeholder="Enter your email" required style="background-color: #1c1e22; color: #ffffff; border: 1px solid #ccc; padding: 10px; border-radius: 4px; width: 100%; box-sizing: border-box;font-size: 14px;">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" id="subject" name="subject" placeholder="Enter subject" required style="background-color: #1c1e22; color: #ffffff; border: 1px solid #ccc; padding: 10px; border-radius: 4px; width: 100%; box-sizing: border-box;font-size: 14px;">
-                                </div>
-                                <div class="form-group">
-                                    <textarea id="message" name="message" placeholder="Write your message" rows="5" required style="background-color: #1c1e22; color: #ffffff; border: 1px solid #ccc; padding: 10px; border-radius: 4px; width: 100%; box-sizing: border-box;font-size: 14px;"></textarea>
-                                </div>
-                                <div class="form-group text-center">
-                                    <button type="submit" class="rn-btn">Send Message</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
-        
-        <!-- End Contuct section -->
-
-    </main>
-        <!-- Start Footer Area -->
-        <div class="rn-footer-area rn-section-gap section-separator">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="footer-area text-center">
-    
-                            <div class="logo">
-                                <a href="index.html">
-                                    <img src="images/NJ.png" alt="logo">
-                                </a>
-                            </div>
-    
-                            <p class="description mt--30">© <script>document.write(new Date().getFullYear())</script> <a target="_blank" href=""> || Made with &#10084; Neeraj Jawahirani</a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End Footer Area -->
-
-    <!--===========================================================-->
-
-
-  <!-- JS -->
-  <script src="js/vendor/jquery.js"></script>
-  <script src="js/vendor/modernizer.min.js"></script>
-  <script src="js/vendor/feather.min.js"></script>
-  <script src="js/vendor/slick.min.js"></script>
-  <script src="js/vendor/bootstrap.js"></script>
-  <script src="js/vendor/text-type.js"></script>
-  <script src="js/vendor/wow.js"></script>
-  <script src="js/vendor/aos.js"></script>
-  <script src="js/vendor/particles.js"></script>
-  <script src="js/main.js"></script>
-
-  <!-- Chat widget mount -->
-  <neeraj-chat-widget></neeraj-chat-widget>
-
-  <!-- Chat widget definition (Shadow DOM, isolated) -->
-  <script type="module">
-    // Guard to avoid "already defined" during hot reloads/duplicate includes
-    if (!customElements.get('neeraj-chat-widget')) {
-      class NeerajChatWidget extends HTMLElement {
-        constructor() {
-          super();
-          this.attachShadow({ mode: 'open' });
-
-          this.shadowRoot.innerHTML = `
-            <style>
-              :host { position: fixed; right: 20px; bottom: 20px; z-index: 9999; }
-              :root{
-                --bg:#0a0b10; --fg:#e7ecf2; --muted:#9aa4b2;
-                --panel:rgba(18,20,30,.92); --border:rgba(255,255,255,.10);
-                --acc1:#f95230; --acc2:#fb2c02;
-                --radius:18px; --shadow:0 22px 60px rgba(0,0,0,.55);
-              }
-              .sub { font-size: 11.5px; color: rgba(255,255,255,0.8); font-weight: 400; margin-top: 2px; }
-                button.chat-launch{
-    all: unset; /* wipe global resets */
-    position: fixed; right: 20px; bottom: 20px;
-    width: 60px; height: 60px; border-radius: 50%;
-    display: grid; place-items: center; line-height: 0;
-    background: linear-gradient(135deg,#fb2c02,#f95230);
-    color: #fff; font-size: 24px; cursor: pointer;
-    box-shadow: 0 22px 60px rgba(0,0,0,.55);
-    z-index: 99999; /* above footer and canvas */
-  }
-  .wrap{ z-index: 99999; } /* panel above everything */
-              .chat-launch{
-                position:fixed;right:0;bottom:0;width:60px;height:60px;border-radius:50%;
-                display:grid;place-items:center;border:none;cursor:pointer;color:#fff;
-                background:linear-gradient(135deg,var(--acc2),var(--acc1));box-shadow:var(--shadow);font-size:24px;
-              }
-              .wrap{position:fixed;right:0;bottom:70px;width:380px;max-width:95vw;display:none}
-              .panel{
-                display:grid;grid-template-rows:auto 1fr auto;height:560px;max-height:78vh;
-                background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);
-                box-shadow:var(--shadow);overflow:hidden;backdrop-filter:blur(12px) saturate(120%);
-              }
-              .head{
-                display:flex;justify-content:space-between;align-items:center;padding:12px 14px;color:#fff;
-                background:linear-gradient(135deg,var(--acc2),var(--acc1));
-              }
-               /* Panel with subtle orange glow */
-.panel {
-  background: linear-gradient(145deg, #0f1117, #1a1c24);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 22px 60px rgba(0,0,0,0.7),
-              0 0 15px rgba(249,82,48,0.25); /* orange glow */
-}
-
-/* Messages area with a warmer gradient */
-.body {
-  background: linear-gradient(180deg, #101114, #181a22);
-}
-
-/* Input area with orange top border */
-.input {
-  background: linear-gradient(180deg, #16171c, #1d2028);
-  border-top: 2px solid var(--acc1);
-}
-
-/* Quick actions bar with orange edge */
-.quick-actions {
-  background: linear-gradient(90deg, rgba(20,20,28,0.95), rgba(28,28,36,0.95));
-  padding: 8px 12px;
-  border-radius: 0 0 14px 14px;
-  box-shadow: inset 0 1px 2px rgba(255,255,255,0.05),
-              0 -2px 6px rgba(249,82,48,0.35); /* top orange glow */
-}
-
-/* Hover highlight on quick-action buttons */
-.quick-actions button:hover {
-  transform: translateY(-2px);
-  opacity: 0.95;
-  box-shadow: 0 0 8px rgba(249,82,48,0.6);
-}
- 
-              .brand{font-weight:800}
-              .x{border:none;background:rgba(255,255,255,.15);color:#fff;width:32px;height:32px;border-radius:10px;cursor:pointer}
-              .x:hover{background:rgba(255,255,255,.25)}
-              .body{padding:10px;background:#101114;overflow:auto;display:flex;flex-direction:column;gap:6px}
-              .msg{max-width:92%;padding:10px 14px;border-radius:16px;white-space:pre-wrap;word-wrap:break-word}
-              .bot{align-self:flex-start;background:#fff;color:#111;border-radius:16px 16px 16px 4px}
-              .user{align-self:flex-end;background:linear-gradient(135deg,var(--acc2),var(--acc1));color:#fff;border-radius:16px 16px 4px 16px}
-              .meta{font-size:11px;color:var(--muted);margin-top:2px}
-              .row{display:flex;flex-direction:column}
-              .input{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;padding:10px;border-top:1px solid var(--border);background:#16171c}
-              textarea{
-                resize:none;min-height:42px;max-height:140px;padding:10px 12px;border-radius:12px;border:1px solid var(--border);
-                background:#1d1f25;color:#fff;outline:none
-              }
-              textarea:focus{outline:2px solid var(--acc1)}
-              .send{
-                width:44px;height:44px;border-radius:50%;border:none;cursor:pointer;color:#fff;font-size:18px;
-                background:linear-gradient(135deg,var(--acc2),var(--acc1));
-                display:grid;place-items:center;
-              }
-              .msg.bot .blk{margin:0;padding:0;border:0}
-              .msg.bot .blk + .blk{margin-top:6px}
-              .msg.bot .title{
-                margin:0;padding-left:8px;border-left:3px solid var(--acc1);
-                font-weight:600;font-size:14px;color:#0f172a;
-              }
-              .msg.bot .list{margin:2px 0 0 0;padding-left:16px;list-style:disc}
-              .msg.bot .list li{margin:0;padding:0;line-height:1.32}
-              .msg.bot a{ color:#0b67ff; text-decoration:none; border-bottom:1px dotted rgba(0,0,0,.25); }
-              .msg.bot a:hover{ text-decoration:underline }
-              .quick-actions { display:flex; flex-wrap:wrap; gap:8px; margin:10px 0 5px 42px; }
-              .quick-actions button {
-                background: linear-gradient(135deg, var(--acc2), var(--acc1));
-                border: none; padding: 6px 12px; border-radius: 14px; font-size: 13px;
-                color: #fff; font-weight: 600; cursor: pointer; transition: transform .1s ease, opacity .2s ease;
-              }
-              .quick-actions button:hover { transform: translateY(-2px); opacity: .9; }
-              .msg.bot pre{
-                background:#0f1115; color:#e6edf3; border:1px solid #2b2f36;
-                border-radius:12px; padding:10px; overflow:auto; margin:6px 0 0 0;
-              }
-              .msg.bot code{ font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; font-size:13px }
-              @media (max-width:560px){ .wrap{ left:12px; right:12px } .panel{ height:74vh } }
-
-              /* ===== Chat “card” skin (light panel + dark header + orange accents) ===== */
-
-/* Panel container */
-.wrap{ right:24px; bottom:96px; z-index:99999; }
-.panel{
-  border-radius:22px; overflow:hidden;
-  border:1px solid rgba(0,0,0,.08);
-  background:#f5f7fb;
-  /* soft drop + warm glow */
-  box-shadow:0 24px 60px rgba(0,0,0,.35), 0 0 16px rgba(249,82,48,.18);
-}
-
-/* Header: dark solid bar */
-.head{
-  background:linear-gradient(180deg,#181a20,#0f1115);
-  padding:14px 16px;
-  border-bottom:1px solid rgba(255,255,255,.06);
-}
-.head .brand{ font-weight:800; letter-spacing:.2px; }
-.head .sub{ color:rgba(255,255,255,.75); font-size:12px; }
-
-/* Body: light patterned background */
-.body{
-  /* subtle pattern + paper tone */
-  background:
-    radial-gradient(circle at 25px 25px, rgba(0,0,0,.02) 0 24px, transparent 24px) 0 0/56px 56px,
-    radial-gradient(circle at 6px 6px, rgba(0,0,0,.035) 0 3px, transparent 3px) 0 0/28px 28px,
-    #f3f4f7;
-  color:#111;
-}
-
-/* Rows & timestamps */
-.row{ margin:6px 10px; }
-.meta{ color:#8a8f98; }
-
-/* Message bubbles */
-.msg{ position:relative; font-size:15px; line-height:1.5; box-shadow:0 6px 18px rgba(0,0,0,.08); }
-.msg.bot{
-  background:#ffffff; color:#1a1f2e; border-radius:18px; padding:12px 14px;
-}
-.msg.user{
-  background:#15171e; color:#fff; border-radius:18px; padding:10px 14px;
-}
-
-/* Little tails (optional but cute) */
-.msg.bot::after,
-.msg.user::after{ content:""; position:absolute; bottom:10px; border:8px solid transparent; }
-.msg.bot::after { left:-6px;  border-right-color:#ffffff; }
-.msg.user::after{ right:-6px; border-left-color:#15171e; }
-
-/* Code blocks in bot messages */
-.msg.bot pre{
-  background:#0f1115; color:#e6edf3; border:1px solid #2b2f36;
-  border-radius:12px; padding:10px; margin-top:6px;
-}
-
-/* Quick actions: pill buttons on dark strip */
-.quick-actions{
-  background:linear-gradient(90deg, rgba(20,20,28,.96), rgba(28,28,36,.96));
-  padding:12px 16px; border-top:1px solid rgba(255,255,255,.06);
-  border-radius:12px; margin:10px 12px 0; gap:10px;
-  box-shadow:inset 0 1px 2px rgba(255,255,255,.05);
-}
-.quick-actions button{
-  background:#fff; color:#111; border:1px solid rgba(0,0,0,.06);
-  border-radius:999px; padding:8px 12px; font-weight:700; font-size:13px;
-  box-shadow:0 4px 12px rgba(0,0,0,.08); transition:transform .1s ease, box-shadow .2s ease;
-}
-.quick-actions button:hover{
-  transform:translateY(-2px);
-  box-shadow:0 8px 18px rgba(0,0,0,.12), 0 0 8px rgba(249,82,48,.45);
-}
-
-/* Input: light card w/ orange action */
-.input{
-  background:#f0f2f6; border-top:1px solid rgba(0,0,0,.06);
-  padding:12px; gap:10px;
-}
-textarea{
-  background:#fff; color:#111; border:1px solid rgba(0,0,0,.10);
-  border-radius:16px; min-height:46px; padding:12px 12px;
-}
-textarea::placeholder{ color:#9aa4b2; }
-.send{
-  width:46px; height:46px; border-radius:50%;
-  background:linear-gradient(135deg,var(--acc2),var(--acc1));
-  color:#fff; border:none; display:grid; place-items:center;
-  box-shadow:0 8px 22px rgba(251,44,2,.35);
-}
-
-/* Launcher bubble: orange, glossy */
-button.chat-launch{
-  all: unset;
-  position:fixed; right:20px; bottom:20px; z-index:99999;
-  width:62px; height:62px; border-radius:50%; line-height:0;
-  background:
-    radial-gradient(circle at 30% 30%, #ffd9cf, rgba(255,255,255,.55) 25%, transparent 26%),
-    radial-gradient(circle at 32% 28%, rgba(255,255,255,.8), transparent 50%),
-    linear-gradient(145deg, var(--acc2), var(--acc1));
-  color:#fff; font-size:24px; display:grid; place-items:center; cursor:pointer;
-  box-shadow:0 14px 34px rgba(251,44,2,.42), 0 10px 24px rgba(0,0,0,.35);
-}
-.send {
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
-  border: none;
-  background: #000;        /* solid black */
-  color: #fff;             /* white arrow */
-  font-size: 18px;
-  display: grid;
-  place-items: center;
-  cursor: pointer;
-  box-shadow: none;        /* remove glow */
-}
-
-            </style>
-
-            <button class="chat-launch" id="openBtn" aria-label="Open chat">💬</button>
-
-            <div class="wrap" id="wrap" part="wrap">
-              <section class="panel">
-                <header class="head">
-                  <div>
-                    <div class="brand">Neeraj’s Assistant</div>
-                    <div class="sub">Built by the user — may sometimes generate incorrect info.</div>
-                  </div>
-                  <button class="x" id="closeBtn" aria-label="Close">✕</button>
-                </header>
-
-                <main class="body" id="body">
-                  <div class="row">
-                    <div class="msg bot">Hello, hope you are doing good. I'm here to help with your questions. Before we begin, what's your name?</div>
-                    <div class="meta">—</div>
-                  </div>
-                </main>
-
-                <div class="quick-actions">
-                  <button data-q="Tell me about your experiences">💼 Experience</button>
-                  <button data-q="Tell me about your skills">🛠 Skills</button>
-                  <button data-q="List your projects">📂 Projects</button>
-                  <button data-q="Show your education">🎓 Education</button>
-                  <button data-q="Share your contact details">📞 Contact</button>
-                  <button data-q="Share your publications">👨‍💻 Publications</button>
-                </div>
-
-                <form class="input" id="form" autocomplete="off">
-                  <textarea id="inp" placeholder="Type a message… (Shift+Enter = new line)"></textarea>
-                  <button class="send" id="send" type="submit" title="Send (Enter)">➤</button>
-                </form>
-              </section>
-            </div>
-          `;
-
-          // ====== Script (scoped) ======
-          const API_URL = "https://Neeraj16-portfolio-chat-api2.hf.space/api/chat";
-
-          const $ = (sel) => this.shadowRoot.querySelector(sel);
-          const wrap = $('#wrap');
-          const openBtn = $('#openBtn');
-          const closeBtn = $('#closeBtn');
-          const body = $('#body');
-          const form = $('#form');
-          const inp = $('#inp');
-          const qa = this.shadowRoot.querySelector('.quick-actions');
-
-          let username = null;
-
-          const timeNow = () => new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
-          const autosize = () => { inp.style.height='auto'; inp.style.height = Math.min(inp.scrollHeight, 140) + 'px'; };
-
-          const addMsg = (text, who='bot') => {
-            const row = document.createElement('div'); row.className='row';
-            const msg = document.createElement('div'); msg.className='msg ' + who;
-            if (who === 'bot') { msg.innerHTML = text; } else { msg.textContent = text; }
-            const meta = document.createElement('div'); meta.className='meta'; meta.textContent = timeNow();
-            row.appendChild(msg); row.appendChild(meta);
-            body.appendChild(row); body.scrollTop = body.scrollHeight;
-          };
-
-          const addTyping = () => {
-            const row = document.createElement('div'); row.className='row';
-            const msg = document.createElement('div'); msg.className='msg bot'; msg.textContent='…';
-            row.appendChild(msg); body.appendChild(row); body.scrollTop = body.scrollHeight; return row;
-          };
-
-          const escapeHTML = (s) => s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
-
-          const linkify = (s) => {
-            s = s.replace(/([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/g,'<a href="mailto:$1" target="_blank" rel="noopener">$1</a>');
-            s = s.replace(/\b(https?:\/\/[^\s<)]+)\b/g,'<a href="$1" target="_blank" rel="noopener">$1</a>');
-            s = s.replace(/\b(www\.[^\s<)]+)\b/g,(m)=>`<a href="https://${m}" target="_blank" rel="noopener">${m}</a>`);
-            return s;
-          };
-
-          const renderMarkdownLite = (raw) => {
-            if(!raw) return "";
-            const parts = [];
-            const regex = /```([\s\S]*?)```/g;  // ✅ regex literal (single backslashes)
-            let last = 0, m;
-            while ((m = regex.exec(raw)) !== null) {
-              if (m.index > last) parts.push({type:'text', value: raw.slice(last, m.index)});
-              parts.push({type:'code', value: m[1]});
-              last = regex.lastIndex;
-            }
-            if (last < raw.length) parts.push({type:'text', value: raw.slice(last)});
-            const html = parts.map(p=>{
-              if (p.type === 'code') return `<pre><code>${escapeHTML(p.value)}</code></pre>`;
-              return linkify(escapeHTML(p.value));
-            }).join("");
-            return html;
-          };
-
-          const formatBotAnswer = (text) => {
-            if(!text) return "";
-            const sections = text.split("•").map(s => s.trim()).filter(Boolean);
-            const html = sections.map(sec=>{
-              const i = sec.indexOf(":");
-              if(i === -1){
-                const header = sec.replace(/^•\s*/,"");
-                return `<div class="blk"><div class="title">${renderMarkdownLite(header)}</div></div>`;
-              }
-              const header = sec.slice(0,i).trim().replace(/^•\s*/,"");
-              const rest = sec.slice(i+1);
-              const details = rest.split(/;|\n/).map(s=>s.replace(/\s+/g," ").trim()).filter(Boolean);
-              if(details.length===0){
-                return `<div class="blk"><div class="title">${renderMarkdownLite(header)}</div></div>`;
-              }
-              const bullets = details.map(d=>`<li>${renderMarkdownLite(d)}</li>`).join("");
-              return `<div class="blk"><div class="title">${renderMarkdownLite(header)}</div><ul class="list">${bullets}</ul></div>`;
-            }).join("");
-            return html || renderMarkdownLite(text);
-          };
-
-          const resetChat = () => {
-            username = null;
-            body.innerHTML = '';
-            addMsg("Hello, hope you are doing good. I'm here to help with your questions. Before we begin, what's your name?", 'bot');
-          };
-
-          // Open/Close
-          openBtn.addEventListener('click', ()=>{ wrap.style.display='block'; setTimeout(()=>inp.focus(),120); });
-          closeBtn.addEventListener('click', ()=>{ wrap.style.display='none'; resetChat(); });
-
-          // Enter to send
-          inp.addEventListener('keydown', (e)=>{
-            if(e.key==='Enter' && !e.shiftKey){ e.preventDefault(); form.requestSubmit(); }
-          });
-          inp.addEventListener('input', autosize);
-
-          // Quick actions
-          if (qa){
-            qa.querySelectorAll('button').forEach(btn=>{
-              btn.addEventListener('click', ()=> {
-                const q = btn.getAttribute('data-q') || btn.textContent.trim();
-                sendQuestion(q);
-              });
-            });
-          }
-
-          const sendQuestion = async (text) => {
-            if(!text) return;
-            addMsg(text, 'user');
-
-            if(!username){
-              username = text.replace(/[^a-zA-Z \-'.]/g,'').trim().split(/\s+/).slice(0,2).join(' ');
-              addMsg(`Welcome ${escapeHTML(username)}, how can I help you today?`, 'bot');
-              return;
-            }
-
-            const typing = addTyping();
-            try{
-              const resp = await fetch(API_URL, {
-                method:'POST',
-                headers:{'Content-Type':'application/json'},
-                body: JSON.stringify({ question: `${text} (User: ${username})` })
-              });
-              if(!resp.ok) throw new Error('HTTP '+resp.status);
-              const data = await resp.json();
-              typing.remove();
-              const formatted = formatBotAnswer((data.answer || '').trim());
-              addMsg(formatted || "(no answer)", 'bot');
-            }catch(err){
-              console.error(err);
-              typing.remove();
-              addMsg("Sorry, something went wrong. Please try again.", 'bot');
-            }
-          };
-
-          form.addEventListener('submit', (e)=>{
-            e.preventDefault();
-            const text = inp.value.trim();
-            if(!text) return;
-            inp.value=''; autosize();
-            sendQuestion(text);
-          });
-
-          autosize();
-        }
-      }
-
-      customElements.define('neeraj-chat-widget', NeerajChatWidget);
-    }
-  </script>
+    <div class="divider"></div>
+
+    <!-- Contact -->
+    <div class="contact-row">
+      <a href="mailto:neerajjawahirani@gmail.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+        </svg>
+        neerajjawahirani@gmail.com
+      </a>
+      <a href="tel:+18503003851">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.28h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 15.32z"/>
+        </svg>
+        +1 (850) 300‑3851
+      </a>
+    </div>
+
+    <!-- Social -->
+    <div class="social-row">
+      <a href="https://www.linkedin.com/in/neeraj-jawahirani-71841a12a/" target="_blank" rel="noopener" title="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
+        </svg>
+      </a>
+      <a href="https://github.com/NeerajJ16/" target="_blank" rel="noopener" title="GitHub">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+        </svg>
+      </a>
+      <a href="https://neerajjawahirani.medium.com/" target="_blank" rel="noopener" title="Medium Blog">
+        <svg viewBox="0 0 24 24" fill="currentColor" stroke="none">
+          <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zm7.42 0c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/>
+        </svg>
+      </a>
+      <a href="https://www.instagram.com/neeraj_jawahirani_/" target="_blank" rel="noopener" title="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+        </svg>
+      </a>
+      <a href="https://www.facebook.com/neeraj.jawahirani/" target="_blank" rel="noopener" title="Facebook">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+        </svg>
+      </a>
+    </div>
+
+  </div>
+
+  <p class="footer-note">© <script>document.write(new Date().getFullYear())</script> Neeraj Jawahirani — Made with ♥</p>
 
 </body>
 </html>
